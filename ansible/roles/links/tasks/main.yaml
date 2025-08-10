@@ -1,0 +1,11 @@
+---
+- name: Manage links
+  block:
+    - name: Ensure files are linked
+      ansible.builtin.include_tasks: link.yaml
+      with_items: "{{ links_items }}"
+      when: item.state is not defined or item.state == "present"
+    - name: Ensure files are unlinked
+      ansible.builtin.include_tasks: unlink.yaml
+      with_items: "{{ links_items }}"
+      when: item.state is defined and item.state == "absent"

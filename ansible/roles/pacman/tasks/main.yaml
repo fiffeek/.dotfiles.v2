@@ -1,0 +1,4 @@
+---
+- name: Ensure pacman packages are managed {{ pacman_packages | map(attribute='name') }}
+  ansible.builtin.include_tasks: package.yaml
+  with_items: "{{ pacman_packages }}"

@@ -1,0 +1,89 @@
+---
+dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/"
+modules:
+  - name: base packages
+    packages:
+      - name: acpi
+        state: latest
+        source: pacman
+      - name: pkgfile
+        state: latest
+        source: pacman
+      - name: base-devel
+        state: latest
+        source: pacman
+      - name: openssh
+        state: latest
+        source: pacman
+      - name: git
+        state: latest
+        source: pacman
+      - name: htop
+        state: latest
+        source: pacman
+      - name: dnsutils
+        state: latest
+        source: pacman
+      - name: traceroute
+        state: latest
+        source: pacman
+      - name: powertop
+        state: latest
+        source: pacman
+      - name: nmap
+        state: latest
+        source: pacman
+      - name: tree
+        state: latest
+        source: pacman
+  - name: browsers
+    packages:
+      - name: firefox
+        state: latest
+        source: pacman
+  - name: hyprland
+    packages:
+      - name: hyprpaper
+        state: latest
+        source: pacman
+      - name: hyprland
+        state: latest
+        source: pacman
+      - name: hyprevents-git
+        state: latest
+        source: aur
+      - name: hyprlock-git
+        state: latest
+        source: aur
+      - name: hyprpicker
+        state: latest
+        source: aur
+      - name: hyprprop-git
+        state: latest
+        source: aur
+      - name: hyprpaper
+        state: latest
+        source: aur
+      - name: blueman-git
+        state: latest
+        source: aur
+      - name: wlr-randr
+        state: latest
+        source: aur
+      - name: xdg-desktop-portal-hyprland-git
+        state: latest
+        source: aur
+      - name: waybar-module-pacman-updates-git
+        state: latest
+        source: aur
+  - name: tmux
+    packages:
+      - name: tmux
+        state: latest
+        source: pacman
+    git_repos:
+      - repo: https://github.com/tmux-plugins/tpm.git
+        dest: "{{ configs_home }}/tmux/plugins/tpm"
+    links:
+      - src: "{{ dotfiles_source_dir }}/tmux/tmux.conf"
+        dest: "{{ configs_home }}/tmux/tmux.conf"

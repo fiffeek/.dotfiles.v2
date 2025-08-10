@@ -1,0 +1,21 @@
+---
+- name: Manage pacman packages
+  ansible.builtin.include_role:
+    name: pacman
+  vars:
+    pacman_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'pacman') | list }}"
+- name: Manage aur packages
+  ansible.builtin.include_role:
+    name: aur
+  vars:
+    aur_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'aur') | list }}"
+- name: Manage git repositories
+  ansible.builtin.include_role:
+    name: git_repo
+  vars:
+    git_repo_items: "{{ module.git_repos | default([]) }}"
+- name: Manage links
+  ansible.builtin.include_role:
+    name: links
+  vars:
+    links_items: "{{ module.links | default([]) }}"

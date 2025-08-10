@@ -1,0 +1,10 @@
+---
+- name: Provision system
+  hosts: all
+  tasks:
+    - name: Process module {{ module.name }}
+      ansible.builtin.include_role:
+        name: module
+      loop: "{{ modules }}"
+      loop_control:
+        loop_var: module

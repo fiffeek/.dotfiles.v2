@@ -1,0 +1,5 @@
+---
+- name: Ensure file is unlinked {{ item.dest }}
+  ansible.builtin.file:
+    path: "{{ item.dest }}"
+    state: absent

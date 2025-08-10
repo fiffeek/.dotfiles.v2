@@ -4,6 +4,7 @@ INSTALL_DIR := install
 PYTHON_BIN := python
 ASDF_HTML_URL := https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-amd64.tar.gz
 ASDF_BIN := ./bin/asdf
+ANSIBLE_ROOT := ansible
 
 install: $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
 
@@ -35,6 +36,9 @@ $(INSTALL_DIR)/.asdf.python.stamp: $(INSTALL_DIR)/.asdf.shell.stamp
 		"https://github.com/asdf-community/asdf-python.git"
 	$(ASDF_BIN) set python 3.9.0
 	touch $@
+
+provisioning: $(INSTALL_DIR)/.venv.stamp
+	. "$(VENV)/bin/activate"; cd "$(ANSIBLE_ROOT)" && $(MAKE) $@
 
 clean:
 	r  -rf "$(VENV)" "$(INSTALL_DIR)"

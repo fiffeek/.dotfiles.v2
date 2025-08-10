@@ -1,0 +1,9 @@
+---
+- name: Install package {{ item.name }}
+  kewlfft.aur.aur:
+    name: "{{ item.name }}"
+    use: makepkg
+    state: present
+  become: true
+  become_user: aur_builder
+  when: ansible_facts["os_family"] == "Archlinux"
