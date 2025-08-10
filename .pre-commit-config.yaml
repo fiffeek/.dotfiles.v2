@@ -1,0 +1,37 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.17.0
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.37.1
+    hooks:
+      - id: yamllint
+        args: [--strict, -c, .yamllint]
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+  - repo: local
+    hooks:
+      - id: mbake-format
+        name: mbake formatter
+        entry: mbake format --config .bake.toml
+        language: system
+        types: [makefile]
+      - id: check-pip-freeze
+        name: Generate pip requirements
+        entry: ./hooks/pip-freeze.sh
+        language: system
+      - id: ansible-lint
+        name: Lint ansible files
+        entry: ./hooks/ansible-lint.sh
+        language: system
