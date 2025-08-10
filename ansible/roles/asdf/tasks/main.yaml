@@ -1,0 +1,4 @@
+---
+- name: Ensure asdf packages are managed {{ asdf_packages | map(attribute='name') }}
+  ansible.builtin.include_tasks: package.yaml
+  with_items: "{{ asdf_packages }}"

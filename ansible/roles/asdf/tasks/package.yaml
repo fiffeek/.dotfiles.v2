@@ -1,0 +1,23 @@
+---
+- name: Register plugins
+  ansible.builtin.shell: "{{ asdf.extra_env }} asdf plugin add {{ item.name }} {{ item.repository }}"
+  args:
+    creates: .asdf/plugins/{{ item.name }}
+    chdir: "{{ ansible_user_dir }}"
+    executable: /bin/bash
+- name: Install tools
+  ansible.builtin.shell: asdf install {{ item.name }} {{ version }}
+  args:
+    chdir: "{{ ansible_user_dir }}"
+    executable: /bin/bash
+  register: asdf_install
+  loop: "{{ item.versions }}"
+  loop_control:
+    loop_var: version
+  changed_when: "'is already installed' not in asdf_install.stdout"
+- name: Set global versions
+  ansible.builtin.shell: asdf set -u {{ item.name }} {{ item.global }}
+  args:
+    chdir: "{{ ansible_user_dir }}"
+    executable: /bin/bash
+  changed_when: false
