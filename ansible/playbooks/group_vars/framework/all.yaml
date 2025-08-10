@@ -1,5 +1,5 @@
 ---
-dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/"
+dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/dots"
 modules:
   - name: base packages
     packages:
@@ -36,9 +36,17 @@ modules:
       - name: tree
         state: latest
         source: pacman
+      - name: unzip
+        state: latest
+        source: pacman
   - name: browsers
     packages:
       - name: firefox
+        state: latest
+        source: pacman
+  - name: terminal
+    packages:
+      - name: kitty
         state: latest
         source: pacman
   - name: hyprland
@@ -49,31 +57,7 @@ modules:
       - name: hyprland
         state: latest
         source: pacman
-      - name: hyprevents-git
-        state: latest
-        source: aur
-      - name: hyprlock-git
-        state: latest
-        source: aur
-      - name: hyprpicker
-        state: latest
-        source: aur
-      - name: hyprprop-git
-        state: latest
-        source: aur
-      - name: hyprpaper
-        state: latest
-        source: aur
       - name: blueman-git
-        state: latest
-        source: aur
-      - name: wlr-randr
-        state: latest
-        source: aur
-      - name: xdg-desktop-portal-hyprland-git
-        state: latest
-        source: aur
-      - name: waybar-module-pacman-updates-git
         state: latest
         source: aur
   - name: tmux
@@ -85,5 +69,78 @@ modules:
       - repo: https://github.com/tmux-plugins/tpm.git
         dest: "{{ configs_home }}/tmux/plugins/tpm"
     links:
-      - src: "{{ dotfiles_source_dir }}/tmux/tmux.conf"
+      - src: "{{ dotfiles_source_dir }}/tmux/tokyonight_night.tmux"
+        dest: "{{ configs_home }}/tmux/tokyonight_night.tmux"
+      - src: "{{ dotfiles_source_dir }}/tmux/.tmux.conf"
         dest: "{{ configs_home }}/tmux/tmux.conf"
+  - name: dev
+    packages:
+      - name: golang
+        source: asdf
+        repository: https://github.com/kennyp/asdf-golang.git
+        versions:
+          - latest
+        global: latest
+      - name: python
+        source: asdf
+        repository: ""
+        versions:
+          - 3.9.0
+        global: 3.9.0
+      - name: nodejs
+        source: asdf
+        repository: https://github.com/asdf-vm/asdf-nodejs.git
+        versions:
+          - latest
+        global: latest
+      - name: rustup
+        state: latest
+        source: pacman
+  - name: git
+    git_config:
+      - name: user.email
+        value: filipmikina@gmail.com
+        scope: global
+      - name: user.name
+        value: Filip Mikina
+        scope: global
+  - name: nvim
+    git_config:
+      - name: core.editor
+        value: nvim
+        scope: global
+    packages:
+      - name: fzf
+        state: latest
+        source: pacman
+      - name: fd
+        state: latest
+        source: pacman
+      - name: ripgrep
+        state: latest
+        source: pacman
+      - name: lazygit
+        state: latest
+        source: pacman
+      - name: neovim
+        state: latest
+        source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/nvim"
+        dest: "{{ configs_home }}/nvim"
+      - src: "{{ dotfiles_source_dir }}/lazygit/config.yaml"
+        dest: "{{ configs_home }}/lazygit/config.yml"
+  - name: zsh
+    packages:
+      - name: zoxide
+        source: asdf
+        repository: https://github.com/nyrst/asdf-zoxide.git
+        versions:
+          - latest
+        global: latest
+      - name: exa
+        source: asdf
+        repository: https://github.com/nyrst/asdf-exa.git
+        versions:
+          - latest
+        global: latest

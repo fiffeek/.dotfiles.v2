@@ -9,6 +9,16 @@
     name: aur
   vars:
     aur_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'aur') | list }}"
+- name: Manage asdf packages
+  ansible.builtin.include_role:
+    name: asdf
+  vars:
+    asdf_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'asdf') | list }}"
+- name: Manage git config
+  ansible.builtin.include_role:
+    name: git_config
+  vars:
+    git_config_settings: "{{ module.git_config | default([]) }}"
 - name: Manage git repositories
   ansible.builtin.include_role:
     name: git_repo
