@@ -63,6 +63,9 @@ modules:
       - name: kitty
         state: latest
         source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/kitty"
+        dest: "{{ configs_home }}/kitty"
   - name: dev
     packages:
       - name: golang
