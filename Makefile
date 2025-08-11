@@ -8,6 +8,12 @@ ASDF_BIN := ./bin/asdf
 HOME_BIN := ~/.bin
 ANSIBLE_ROOT := ansible
 
+ONLY_MODULE ?=
+EXTRA_ARGS ?=
+ifdef ONLY_MODULE
+EXTRA_ARGS := --extra-vars "only_module=$(ONLY_MODULE)"
+endif
+
 .PHONY: provisioning
 
 install: $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
@@ -47,7 +53,7 @@ $(INSTALL_DIR)/.asdf.python.stamp: $(INSTALL_DIR)/.asdf.shell.stamp
 	touch $@
 
 provisioning: $(INSTALL_DIR)/.venv.stamp
-	. "$(VENV)/bin/activate"; cd "$(ANSIBLE_ROOT)" && $(MAKE) $@
+	. "$(VENV)/bin/activate"; cd "$(ANSIBLE_ROOT)" && $(MAKE) USER_FLAGS='$(EXTRA_ARGS)' $@
 
 clean:
 	r  -rf "$(VENV)" "$(INSTALL_DIR)"

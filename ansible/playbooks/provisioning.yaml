@@ -8,3 +8,4 @@
       loop: "{{ modules }}"
       loop_control:
         loop_var: module
+      when: only_module is not defined or only_module == module.name

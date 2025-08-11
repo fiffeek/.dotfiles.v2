@@ -1,0 +1,7 @@
+---
+- name: Change file {{ item.path }}
+  ansible.builtin.lineinfile:
+    path: "{{ item.path }}"
+    line: "{{ item.line }}"
+    regexp: "{{ item.regexp }}"
+  become: "{{ item.become | default(false) | bool }}"

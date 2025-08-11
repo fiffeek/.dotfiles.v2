@@ -4,6 +4,11 @@
     name: users
   vars:
     users_items: "{{ module.users | default([]) }}"
+- name: Manage line changes
+  ansible.builtin.include_role:
+    name: line_in_file
+  vars:
+    line_in_file_changes: "{{ module.line_in_file | default([]) }}"
 - name: Manage directories
   ansible.builtin.include_role:
     name: directories

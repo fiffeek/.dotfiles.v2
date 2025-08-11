@@ -1,7 +1,7 @@
 ---
 dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/dots"
 modules:
-  - name: base packages
+  - name: base_packages
     packages:
       - name: acpi
         state: latest
@@ -45,6 +45,14 @@ modules:
       - name: libva-utils
         state: latest
         source: pacman
+      - name: wireless-regdb
+        state: latest
+        source: pacman
+    line_in_file:
+      - regexp: ^WIRELESS_REGDOM=.*
+        line: WIRELESS_REGDOM="PL"
+        path: /etc/conf.d/wireless-regdom
+        become: true
   - name: browsers
     packages:
       - name: firefox

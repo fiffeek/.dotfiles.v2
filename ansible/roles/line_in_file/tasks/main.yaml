@@ -1,0 +1,4 @@
+---
+- name: Ensure line in file {{ line_in_file_changes | map(attribute='path') }}
+  ansible.builtin.include_tasks: change.yaml
+  with_items: "{{ line_in_file_changes }}"

@@ -1,8 +1,9 @@
 CHECK_FLAGS := --check --diff
-ADDITIONAL_FLAGS ?=
+USER_FLAGS ?=
+ADDITIONAL_FLAGS ?= $(USER_FLAGS)
 
-ifeq ($(mode),debug)
-	override ADDITIONAL_FLAGS := $(CHECK_FLAGS) -vvvv
+ifeq ($(MODE),debug)
+	override ADDITIONAL_FLAGS := $(USER_FLAGS) $(CHECK_FLAGS) -vvvv
 endif
 
 ANSIBLE_BASE := ansible-playbook
