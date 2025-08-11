@@ -42,6 +42,9 @@ modules:
       - name: radeontop
         state: latest
         source: pacman
+      - name: libva-utils
+        state: latest
+        source: pacman
   - name: browsers
     packages:
       - name: firefox
