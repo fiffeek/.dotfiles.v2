@@ -1,0 +1,14 @@
+---
+- name: Set shell
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+  become: true
+  when: item.shell is defined
+- name: Append groups
+  ansible.builtin.user:
+    name: "{{ item.name }}"
+    groups: "{{ item.groups }}"
+    append: true
+  become: true
+  when: item.groups is defined

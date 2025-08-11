@@ -1,4 +1,9 @@
 ---
+- name: Manage users
+  ansible.builtin.include_role:
+    name: users
+  vars:
+    users_items: "{{ module.users | default([]) }}"
 - name: Manage directories
   ansible.builtin.include_role:
     name: directories

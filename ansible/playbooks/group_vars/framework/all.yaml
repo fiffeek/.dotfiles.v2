@@ -155,6 +155,9 @@ modules:
         dest: "{{ configs_home }}/lazygit/config.yml"
   - name: zsh
     packages:
+      - name: zsh
+        source: pacman
+        state: latest
       - name: zoxide
         source: asdf
         repository: https://github.com/nyrst/asdf-zoxide.git
@@ -167,6 +170,12 @@ modules:
         versions:
           - latest
         global: latest
+    git_repos:
+      - repo: https://github.com/robbyrussell/oh-my-zsh.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+    users:
+      - name: "{{ ansible_user_id }}"
+        shell: /usr/bin/zsh
   - name: prep home layout
     directories:
       - path: "{{ repos.personal_home }}"

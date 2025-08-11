@@ -1,0 +1,4 @@
+---
+- name: Manage user {{ users_items | map(attribute='name') }}
+  ansible.builtin.include_tasks: user.yaml
+  with_items: "{{ users_items }}"
