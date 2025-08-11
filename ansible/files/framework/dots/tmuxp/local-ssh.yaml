@@ -1,0 +1,17 @@
+---
+session_name: local-ssh
+windows:
+  - layout: d284,180x78,0,0,7
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: ssh black-cat.home
+    start_directory: /home/fmikina
+    window_name: black-cat
+  - layout: d285,180x78,0,0,8
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: ssh cherry-pot.home
+    start_directory: /home/fmikina
+    window_name: cherry-pot

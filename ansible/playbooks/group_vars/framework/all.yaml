@@ -151,6 +151,9 @@ modules:
       - name: tmux
         state: latest
         source: pacman
+      - name: tmuxp
+        state: latest
+        source: pacman
     git_repos:
       - repo: https://github.com/tmux-plugins/tpm.git
         dest: "{{ configs_home }}/tmux/plugins/tpm"
@@ -165,6 +168,8 @@ modules:
         dest: "{{ binaries_home }}/tmux-window-switch.sh"
       - src: "{{ linux_source_dir }}/bin/tmux-update-display.sh"
         dest: "{{ binaries_home }}/tmux-update-display.sh"
+      - src: "{{ dotfiles_source_dir }}/tmuxp"
+        dest: "{{ configs_home }}/tmuxp"
   - name: git
     tag: g
     git_config:
