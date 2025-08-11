@@ -11,6 +11,7 @@ return {
       "bzl",
       "clangd",
       "jinja-lsp",
+      "hyprls",
     },
   },
 }
