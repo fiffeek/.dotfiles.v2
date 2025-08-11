@@ -174,3 +174,12 @@ modules:
     git_repos:
       - repo: ssh://git@git.home:12222/fiffeek/brain.git
         dest: "{{ repos.personal_home }}/brain"
+  - name: personal repos
+    git_repos:
+      - repo: ssh://git@git.home:12222/fiffeek/homelab.git
+        dest: "{{ repos.personal_home }}/homelab"
+        version: main
+  - name: forks and external repos
+    git_repos:
+      - repo: git@github.com:fiffeek/searxng.git
+        dest: "{{ repos.external_home }}/searxng"
