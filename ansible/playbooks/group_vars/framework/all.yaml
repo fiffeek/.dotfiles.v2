@@ -54,6 +54,15 @@ modules:
         line: WIRELESS_REGDOM="PL"
         path: /etc/conf.d/wireless-regdom
         become: true
+  - name: fonts
+    tag: f
+    packages:
+      - name: font-manager
+        state: latest
+        source: pacman
+      - name: ttf-iosevka-nerd
+        state: latest
+        source: pacman
   - name: browsers
     tag: b
     packages:
