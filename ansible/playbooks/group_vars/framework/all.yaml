@@ -69,6 +69,9 @@ modules:
       - name: firefox
         state: latest
         source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/firefox/chrome/userChrome.css"
+        dest: "{{ firefox.profile }}/chrome/userChrome.css"
   - name: terminal
     tag: t
     packages:
