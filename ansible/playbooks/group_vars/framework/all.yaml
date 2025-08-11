@@ -55,47 +55,6 @@ modules:
       - name: kitty
         state: latest
         source: pacman
-  - name: hyprland
-    packages:
-      - name: hyprpaper
-        state: latest
-        source: pacman
-      - name: hyprland
-        state: latest
-        source: pacman
-      - name: blueman-git
-        state: latest
-        source: aur
-      - name: udiskie
-        state: latest
-        source: pacman
-      - name: dolphin
-        state: latest
-        source: pacman
-    links:
-      - src: "{{ dotfiles_source_dir }}/hypr"
-        dest: "{{ configs_home }}/hypr"
-      - src: "{{ dotfiles_source_dir }}/electron/electron-flags.conf"
-        dest: "{{ configs_home }}/electron-flags.conf"
-  - name: tmux
-    packages:
-      - name: tmux
-        state: latest
-        source: pacman
-    git_repos:
-      - repo: https://github.com/tmux-plugins/tpm.git
-        dest: "{{ configs_home }}/tmux/plugins/tpm"
-    links:
-      - src: "{{ dotfiles_source_dir }}/tmux/tokyonight_night.tmux"
-        dest: "{{ configs_home }}/tmux/tokyonight_night.tmux"
-      - src: "{{ dotfiles_source_dir }}/tmux/.tmux.conf"
-        dest: "{{ configs_home }}/tmux/tmux.conf"
-      - src: "{{ linux_source_dir }}/bin/tmux-switch.sh"
-        dest: "{{ binaries_home }}/tmux-switch.sh"
-      - src: "{{ linux_source_dir }}/bin/tmux-window-switch.sh"
-        dest: "{{ binaries_home }}/tmux-window-switch.sh"
-      - src: "{{ linux_source_dir }}/bin/tmux-update-display.sh"
-        dest: "{{ binaries_home }}/tmux-update-display.sh"
   - name: dev
     packages:
       - name: golang
@@ -119,6 +78,64 @@ modules:
       - name: rustup
         state: latest
         source: pacman
+  - name: hyprland
+    packages:
+      - name: hyprpaper
+        state: latest
+        source: pacman
+      - name: hyprland
+        state: latest
+        source: pacman
+      - name: blueman-git
+        state: latest
+        source: aur
+      - name: udiskie
+        state: latest
+        source: pacman
+      - name: dolphin
+        state: latest
+        source: pacman
+      - name: brightnessctl
+        state: latest
+        source: pacman
+      - name: playerctl
+        state: latest
+        source: pacman
+      - name: xdg-user-dirs
+        state: latest
+        source: pacman
+      - name: xdg-desktop-portal-hyprland
+        state: latest
+        source: pacman
+    users:
+      - name: "{{ ansible_user_id }}"
+        groups: video,input
+    links:
+      - src: "{{ dotfiles_source_dir }}/hypr"
+        dest: "{{ configs_home }}/hypr"
+      - src: "{{ dotfiles_source_dir }}/electron/electron-flags.conf"
+        dest: "{{ configs_home }}/electron-flags.conf"
+      - src: "{{ dotfiles_source_dir }}/xdg/user-dirs.dirs"
+        dest: "{{ configs_home }}/user-dirs.dirs"
+  - name: tmux
+    packages:
+      - name: tmux
+        state: latest
+        source: pacman
+    git_repos:
+      - repo: https://github.com/tmux-plugins/tpm.git
+        dest: "{{ configs_home }}/tmux/plugins/tpm"
+    links:
+      - src: "{{ dotfiles_source_dir }}/tmux/tokyonight_night.tmux"
+        dest: "{{ configs_home }}/tmux/tokyonight_night.tmux"
+      - src: "{{ dotfiles_source_dir }}/tmux/.tmux.conf"
+        dest: "{{ configs_home }}/tmux/tmux.conf"
+      - src: "{{ linux_source_dir }}/bin/tmux-switch.sh"
+        dest: "{{ binaries_home }}/tmux-switch.sh"
+      - src: "{{ linux_source_dir }}/bin/tmux-window-switch.sh"
+        dest: "{{ binaries_home }}/tmux-window-switch.sh"
+      - src: "{{ linux_source_dir }}/bin/tmux-update-display.sh"
+        dest: "{{ binaries_home }}/tmux-update-display.sh"
   - name: git
     git_config:
       - name: user.email
