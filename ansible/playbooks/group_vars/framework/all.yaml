@@ -173,6 +173,15 @@ modules:
     git_repos:
       - repo: https://github.com/robbyrussell/oh-my-zsh.git
         dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
+      - repo: https://github.com/Aloxaf/fzf-tab.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/fzf-tab"
+      - repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+      - repo: https://github.com/unixorn/fzf-zsh-plugin.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/fzf-zsh-plugin"
+        version: main
+      - repo: https://github.com/romkatv/powerlevel10k.git
+        dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k"
     users:
       - name: "{{ ansible_user_id }}"
         shell: /usr/bin/zsh
