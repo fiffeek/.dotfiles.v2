@@ -8,6 +8,8 @@ ASDF_BIN := ./bin/asdf
 HOME_BIN := ~/.bin
 ANSIBLE_ROOT := ansible
 
+.PHONY: provisioning
+
 install: $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
 
 $(INSTALL_DIR)/.dir.stamp:
