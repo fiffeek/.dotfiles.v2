@@ -75,6 +75,8 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/hypr"
         dest: "{{ configs_home }}/hypr"
+      - src: "{{ dotfiles_source_dir }}/electron/electron-flags.conf"
+        dest: "{{ configs_home }}/electron-flags.conf"
   - name: tmux
     packages:
       - name: tmux
@@ -159,3 +161,16 @@ modules:
         versions:
           - latest
         global: latest
+  - name: prep home layout
+    directories:
+      - path: "{{ repos.personal_home }}"
+      - path: "{{ repos.external_home }}"
+      - path: "{{ repos.work_home }}"
+  - name: note taking
+    packages:
+      - name: obsidian
+        state: latest
+        source: pacman
+    git_repos:
+      - repo: ssh://git@git.home:12222/fiffeek/brain.git
+        dest: "{{ repos.personal_home }}/brain"

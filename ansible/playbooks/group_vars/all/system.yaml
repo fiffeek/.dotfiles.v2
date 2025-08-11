@@ -4,3 +4,7 @@ configs_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(configs_default_hom
 ansible_python_interpreter: "{{ playbook_dir }}/../../venv/bin/python"
 asdf:
   extra_env: ASDF_PYAPP_INCLUDE_DEPS=1
+repos:
+  personal_home: "{{ lookup('env', 'HOME') }}/personal"
+  external_home: "{{ lookup('env', 'HOME') }}/repos"
+  work_home: "{{ lookup('env', 'HOME') }}/work"

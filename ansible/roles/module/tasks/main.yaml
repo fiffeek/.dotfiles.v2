@@ -1,4 +1,9 @@
 ---
+- name: Manage directories
+  ansible.builtin.include_role:
+    name: directories
+  vars:
+    directories_items: "{{ module.directories | default([]) }}"
 - name: Manage pacman packages
   ansible.builtin.include_role:
     name: pacman

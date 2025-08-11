@@ -1,0 +1,4 @@
+---
+- name: Create layout {{ directories_items | map(attribute='path') }}
+  ansible.builtin.include_tasks: directory.yaml
+  with_items: "{{ directories_items }}"

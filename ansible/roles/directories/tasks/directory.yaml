@@ -1,0 +1,6 @@
+---
+- name: Create layout {{ item.path }}
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: "0744"
