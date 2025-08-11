@@ -39,6 +39,9 @@ modules:
       - name: unzip
         state: latest
         source: pacman
+      - name: radeontop
+        state: latest
+        source: pacman
   - name: browsers
     packages:
       - name: firefox
@@ -60,6 +63,15 @@ modules:
       - name: blueman-git
         state: latest
         source: aur
+      - name: udiskie
+        state: latest
+        source: pacman
+      - name: dolphin
+        state: latest
+        source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/hypr"
+        dest: "{{ configs_home }}/hypr"
   - name: tmux
     packages:
       - name: tmux
