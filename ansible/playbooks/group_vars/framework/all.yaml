@@ -185,6 +185,15 @@ modules:
     users:
       - name: "{{ ansible_user_id }}"
         shell: /usr/bin/zsh
+    links:
+      - src: "{{ dotfiles_source_dir }}/zsh/.zshrc"
+        dest: "{{ ansible_env.HOME }}/.zshrc"
+      - src: "{{ dotfiles_source_dir }}/zsh/.p10k.zsh"
+        dest: "{{ ansible_env.HOME }}/.p10k.zsh"
+      - src: "{{ dotfiles_source_dir }}/zsh/config.d"
+        dest: "{{ configs_home }}/zsh/config.d"
+      - src: "{{ dotfiles_source_dir }}/fzf/.fzf.zsh"
+        dest: "{{ ansible_env.HOME }}/.fzf.zsh"
   - name: prep home layout
     directories:
       - path: "{{ repos.personal_home }}"
