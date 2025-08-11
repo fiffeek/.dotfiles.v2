@@ -1,7 +1,8 @@
 ---
 dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/dots"
 modules:
-  - name: base_packages
+  - name: base packages
+    tag: bp
     packages:
       - name: acpi
         state: latest
@@ -54,11 +55,13 @@ modules:
         path: /etc/conf.d/wireless-regdom
         become: true
   - name: browsers
+    tag: b
     packages:
       - name: firefox
         state: latest
         source: pacman
   - name: terminal
+    tag: t
     packages:
       - name: kitty
         state: latest
@@ -67,6 +70,7 @@ modules:
       - src: "{{ dotfiles_source_dir }}/kitty"
         dest: "{{ configs_home }}/kitty"
   - name: dev
+    tag: d
     packages:
       - name: golang
         source: asdf
@@ -90,6 +94,7 @@ modules:
         state: latest
         source: pacman
   - name: hyprland
+    tag: h
     packages:
       - name: hyprpaper
         state: latest
@@ -129,6 +134,7 @@ modules:
       - src: "{{ dotfiles_source_dir }}/xdg/user-dirs.dirs"
         dest: "{{ configs_home }}/user-dirs.dirs"
   - name: tmux
+    tag: tm
     packages:
       - name: tmux
         state: latest
@@ -148,6 +154,7 @@ modules:
       - src: "{{ linux_source_dir }}/bin/tmux-update-display.sh"
         dest: "{{ binaries_home }}/tmux-update-display.sh"
   - name: git
+    tag: g
     git_config:
       - name: user.email
         value: filipmikina@gmail.com
@@ -156,6 +163,7 @@ modules:
         value: Filip Mikina
         scope: global
   - name: nvim
+    tag: false
     git_config:
       - name: core.editor
         value: nvim
@@ -182,6 +190,7 @@ modules:
       - src: "{{ dotfiles_source_dir }}/lazygit/config.yaml"
         dest: "{{ configs_home }}/lazygit/config.yml"
   - name: zsh
+    tag: z
     packages:
       - name: zsh
         source: pacman
@@ -223,11 +232,13 @@ modules:
       - src: "{{ dotfiles_source_dir }}/fzf/.fzf.zsh"
         dest: "{{ ansible_env.HOME }}/.fzf.zsh"
   - name: prep home layout
+    tag: dd
     directories:
       - path: "{{ repos.personal_home }}"
       - path: "{{ repos.external_home }}"
       - path: "{{ repos.work_home }}"
   - name: note taking
+    tag: note
     packages:
       - name: obsidian
         state: latest
@@ -239,15 +250,18 @@ modules:
       - repo: ssh://git@git.home:12222/fiffeek/brain.git
         dest: "{{ repos.personal_home }}/brain"
   - name: personal repos
+    tag: repo
     git_repos:
       - repo: ssh://git@git.home:12222/fiffeek/homelab.git
         dest: "{{ repos.personal_home }}/homelab"
         version: main
   - name: forks and external repos
+    tag: repo
     git_repos:
       - repo: git@github.com:fiffeek/searxng.git
         dest: "{{ repos.external_home }}/searxng"
   - name: misc scrips
+    tag: bin
     links:
       - src: "{{ linux_source_dir }}/bin/av_decrypt"
         dest: "{{ binaries_home }}/av_decrypt"
