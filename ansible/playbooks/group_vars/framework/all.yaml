@@ -90,6 +90,12 @@ modules:
         dest: "{{ configs_home }}/tmux/tokyonight_night.tmux"
       - src: "{{ dotfiles_source_dir }}/tmux/.tmux.conf"
         dest: "{{ configs_home }}/tmux/tmux.conf"
+      - src: "{{ linux_source_dir }}/bin/tmux-switch.sh"
+        dest: "{{ binaries_home }}/tmux-switch.sh"
+      - src: "{{ linux_source_dir }}/bin/tmux-window-switch.sh"
+        dest: "{{ binaries_home }}/tmux-window-switch.sh"
+      - src: "{{ linux_source_dir }}/bin/tmux-update-display.sh"
+        dest: "{{ binaries_home }}/tmux-update-display.sh"
   - name: dev
     packages:
       - name: golang
@@ -171,6 +177,9 @@ modules:
       - name: obsidian
         state: latest
         source: pacman
+    links:
+      - src: "{{ linux_source_dir }}/bin/md-toc"
+        dest: "{{ binaries_home }}/md-toc"
     git_repos:
       - repo: ssh://git@git.home:12222/fiffeek/brain.git
         dest: "{{ repos.personal_home }}/brain"
@@ -183,3 +192,13 @@ modules:
     git_repos:
       - repo: git@github.com:fiffeek/searxng.git
         dest: "{{ repos.external_home }}/searxng"
+  - name: misc scrips
+    links:
+      - src: "{{ linux_source_dir }}/bin/av_decrypt"
+        dest: "{{ binaries_home }}/av_decrypt"
+      - src: "{{ linux_source_dir }}/bin/av_encrypt"
+        dest: "{{ binaries_home }}/av_encrypt"
+      - src: "{{ linux_source_dir }}/bin/backup"
+        dest: "{{ binaries_home }}/backup"
+      - src: "{{ linux_source_dir }}/bin/kvm.sh"
+        dest: "{{ binaries_home }}/kvm.sh"

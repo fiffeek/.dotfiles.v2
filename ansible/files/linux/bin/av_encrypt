@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find . -type f -name "*.vault" -exec echo ansible-vault encrypt --vault-id "$1" {} \; | bash

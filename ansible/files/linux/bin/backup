@@ -1,0 +1,158 @@
+#!/bin/python3
+
+import os
+from datetime import datetime
+import glob
+import subprocess
+import logging
+import click
+from typing import List, Optional
+
+HOME = os.environ["HOME"]
+GLOBS = [
+    f"{HOME}/.ssh",
+    f"{HOME}/.gnugpg",
+    f"{HOME}/Downloads/*.pdf",
+    f"{HOME}/Downloads/*.epub",
+    f"{HOME}/Downloads/cv",
+    f"{HOME}/Downloads/*.mobi",
+    f"{HOME}/work",
+    f"{HOME}/personal",
+    f"{HOME}/repos",
+]
+
+BACKUP_DIR = f"{HOME}/backups/"
+SCRATCH_DIR = f"{BACKUP_DIR}/scratch"
+
+
+def create_scratch(dir: str):
+    logging.debug(f"Creating {dir}")
+    os.makedirs(dir, exist_ok=True)
+
+
+def system_call(command: List[str], dry_run: bool = False):
+    logging.debug(f"Running {' '.join(command)}")
+    if dry_run:
+        return
+    subprocess.check_call(command)
+
+
+def prepare_scratch(debug: bool, scratch: str, sources: List[str]):
+    os.chdir("/")
+
+    expanded_sources = []
+    for pattern in sources:
+        matches = glob.glob(pattern)
+        if matches:
+            expanded_sources.extend(matches)
+        else:
+            logging.debug(f"No matches for {pattern}")
+
+    if not expanded_sources:
+        logging.warning("No sources to back up.")
+        return
+
+    logging.debug(f"Sources {expanded_sources}")
+
+    maybe_dry_run = [] if not debug else ["--dry-run"]
+    command = (
+        ["rsync", "-aRv", "-progress", "--stats"]
+        + maybe_dry_run
+        + expanded_sources
+        + [scratch]
+    )
+    system_call(command)
+
+
+def archive(debug: bool, scratch: str, backup_dir: str, name: Optional[str]):
+    if not name:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        name = f"backup-{date_str}.tar.gz"
+    archive_path = os.path.join(backup_dir, name)
+
+    try:
+        os.remove(archive_path)
+    except:
+        pass
+
+    system_call(["tar", "-czf", archive_path, scratch], dry_run=debug)
+    logging.info(f"Backup archive created: {archive_path}")
+    return archive_path
+
+
+def encrypt_archive(debug: bool, archive_path: str, passphrase: str) -> str:
+    encrypted_path = archive_path + ".gpg"
+    logging.info(f"Encrypting archive to {encrypted_path}")
+    system_call(
+        [
+            "gpg",
+            "--batch",
+            "--yes",
+            "--passphrase",
+            passphrase,
+            "--symmetric",
+            "--cipher-algo",
+            "AES256",
+            "-o",
+            encrypted_path,
+            archive_path,
+        ],
+        dry_run=debug,
+    )
+    logging.info(f"Encryption complete, file: {encrypted_path}")
+    return encrypted_path
+
+
+def send_onsite(debug: bool, server: str, dest: str, backup_dir: str):
+    archives = []
+    matches = glob.glob(f"{backup_dir}/*.tar.gz.gpg")
+    if matches:
+        archives.extend(matches)
+
+    for archive in archives:
+        system_call(
+            ["rsync", "-zc", "--progress", "--stats", archive, f"{server}:{dest}/"],
+            dry_run=debug,
+        )
+
+
+@click.command()
+@click.option("--debug", default=True)
+@click.option("--scratch", default=SCRATCH_DIR)
+@click.option("--sources", default=GLOBS, multiple=True)
+@click.option("--backup-dir", default=BACKUP_DIR)
+@click.option("--only-onsite-send", default=False)
+@click.option("--remote-server", default="black-cat")
+@click.option("--remote-dest", default="/mnt/backups/@data/beagle")
+@click.option("--archive-name", default=None)
+@click.option("--passphrase", default=None, required=True)
+def main(
+    debug: bool,
+    scratch: str,
+    sources: List[str],
+    backup_dir: str,
+    only_onsite_send: bool,
+    remote_server: str,
+    remote_dest: str,
+    archive_name: Optional[str],
+    passphrase: Optional[str],
+):
+    if debug:
+        logging.basicConfig(level=logging.DEBUG)
+    else:
+        logging.basicConfig(level=logging.INFO)
+
+    if not only_onsite_send:
+        create_scratch(scratch)
+        prepare_scratch(debug, scratch=scratch, sources=sources)
+        file = archive(
+            debug=debug, scratch=scratch, backup_dir=backup_dir, name=archive_name
+        )
+        encrypt_archive(debug=debug, passphrase=passphrase, archive_path=file)
+    send_onsite(
+        debug=debug, server=remote_server, dest=remote_dest, backup_dir=backup_dir
+    )
+
+
+if __name__ == "__main__":
+    main()
