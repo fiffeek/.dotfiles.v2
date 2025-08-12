@@ -141,7 +141,7 @@ modules:
       - name: waybar
         state: latest
         source: pacman
-      - name: rofi
+      - name: rofi-wayland
         state: latest
         source: pacman
       - name: blueman-git
