@@ -1,3 +1,4 @@
+PIP_BREAK_SYSTEM_PACKAGES := 1
 
 VENV := venv
 REQUIREMENTS_FILE := requirements.txt

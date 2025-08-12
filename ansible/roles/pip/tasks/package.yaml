@@ -1,0 +1,7 @@
+---
+- name: Install package {{ item.name }}
+  ansible.builtin.pip:
+    name: "{{ item.name }}"
+    version: "{{ item.version | d('') }}"
+    state: "{{ item.state | d('present') }}"
+    executable: "{{ item.pip_path | d(pip_path) }}"

@@ -1,0 +1,4 @@
+---
+- name: Ensure pip packages are managed {{ pip_packages | map(attribute='name') }}
+  ansible.builtin.include_tasks: package.yaml
+  with_items: "{{ pip_packages }}"

@@ -318,3 +318,16 @@ modules:
         dest: "{{ binaries_home }}/backup"
       - src: "{{ linux_source_dir }}/bin/kvm.sh"
         dest: "{{ binaries_home }}/kvm.sh"
+  - name: power
+    tag: pow
+    packages:
+      # https://stackoverflow.com/questions/71369726/no-module-named-gi
+      - name: gobject-introspection
+        state: latest
+        source: pacman
+      - name: pygobject
+        version: 3.52.3
+        source: pip
+      - name: power-profiles-daemon
+        state: latest
+        source: pacman

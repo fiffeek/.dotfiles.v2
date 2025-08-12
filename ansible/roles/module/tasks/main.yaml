@@ -29,6 +29,11 @@
     name: asdf
   vars:
     asdf_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'asdf') | list }}"
+- name: Manage pip packages
+  ansible.builtin.include_role:
+    name: pip
+  vars:
+    pip_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'pip') | list }}"
 - name: Manage git config
   ansible.builtin.include_role:
     name: git_config
