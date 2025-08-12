@@ -49,6 +49,15 @@ modules:
       - name: wireless-regdb
         state: latest
         source: pacman
+      - name: pipewire
+        state: latest
+        source: pacman
+      - name: wireplumber
+        state: latest
+        source: pacman
+      - name: cliphist
+        state: latest
+        source: pacman
     line_in_file:
       - regexp: ^WIRELESS_REGDOM=.*
         line: WIRELESS_REGDOM="PL"
@@ -112,6 +121,27 @@ modules:
         state: latest
         source: pacman
       - name: hyprland
+        state: latest
+        source: pacman
+      - name: hyprlock
+        state: latest
+        source: pacman
+      - name: hyprpolkitagent
+        state: latest
+        source: pacman
+      - name: mako
+        state: latest
+        source: pacman
+      - name: qt5-wayland
+        state: latest
+        source: pacman
+      - name: qt6-wayland
+        state: latest
+        source: pacman
+      - name: waybar
+        state: latest
+        source: pacman
+      - name: rofi
         state: latest
         source: pacman
       - name: blueman-git
