@@ -358,11 +358,11 @@ modules:
       - exec: /usr/bin/tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
     udev:
       - rule: >-
-          SUBSYSTEM=="power_supply", ATTR{online}=="0", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run --machine={{ ansible_user_id }}@.host --user
-          /home/{{ ansible_user_id }}/.bin/set-power-profile.sh powersaver"
+          SUBSYSTEM=="power_supply", ATTR{online}=="0", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run
+          --machine={{ ansible_user_id }}@.host --user /home/{{ ansible_user_id }}/.bin/set-power-profile.sh powersaver"
       - rule: >-
-          SUBSYSTEM=="power_supply", ATTR{online}=="1", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run --machine={{ ansible_user_id }}@.host --user
-          /home/{{ ansible_user_id }}/.bin/set-power-profile.sh performance"
+          SUBSYSTEM=="power_supply", ATTR{online}=="1", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run
+          --machine={{ ansible_user_id }}@.host --user /home/{{ ansible_user_id }}/.bin/set-power-profile.sh performance"
     line_in_file:
       - regexp: ^options iwlwifi.*
         line: options iwlwifi power_save=Y power_level=1 uapsd_disable=0 led_mode=3
