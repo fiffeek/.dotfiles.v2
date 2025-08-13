@@ -1,0 +1,22 @@
+---
+session_name: dots
+windows:
+  - layout: 9cf0,164x40,0,0[164x19,0,0,2,164x20,0,20,3]
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - pane
+    start_directory: /home/fmikina/personal/.dotfiles
+    window_name: v1
+  - focus: "true"
+    layout: 9cf0,164x40,0,0[164x19,0,0,2,164x20,0,20,3]
+    options: {}
+    shell_command_before:
+      - source venv/bin/activate
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - shell_command: make install
+    start_directory: /home/fmikina/personal/.dotfiles.v2
+    window_name: v2
