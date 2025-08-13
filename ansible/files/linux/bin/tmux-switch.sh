@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-REPOS="$HOME/repos"
-PERSONAL="$HOME/personal"
+REPOS=("$HOME/repos" "$HOME/personal" "$HOME/work")
 export TMUX_FZF_OPTIONS="-p -w 62% -h 38% -m"
 
 # Combined:
@@ -16,9 +15,13 @@ else
   current_sessions=$(tmux list-sessions -F "#{session_name} #{session_last_attached}" 2>/dev/null |
     sort -k2 -nr |
     awk '{print $1}')
-  repos=$(find "$REPOS" -mindepth 1 -maxdepth 1 -printf "%f\n")
-  personal=$(find "$PERSONAL" -mindepth 1 -maxdepth 1 -printf "%f\n")
-  options=($current_sessions "${repos[@]}" "${tmuxp_saved_sessions[@]}" "${personal[@]}")
+  repo_dirs=()
+  for repo_path in "${REPOS[@]}"; do
+    if [[ -d "$repo_path" ]]; then
+      repo_dirs+=($(find "$repo_path" -mindepth 1 -maxdepth 1 -printf "%f\n"))
+    fi
+  done
+  options=($current_sessions "${repo_dirs[@]}" "${tmuxp_saved_sessions[@]}")
   options=($(printf "%s\n" "${options[@]}" | awk '!seen[$0]++'))
   # https://github.com/junegunn/fzf/issues/1693
   selected=$(printf "%s\n" "${options[@]}" | fzf-tmux --bind=enter:replace-query+print-query $TMUX_FZF_OPTIONS --preview="tmux capture-pane -ep -t {}")
@@ -29,7 +32,14 @@ if [ -z $selected ]; then
 fi
 
 session_name=$(basename ${selected} | tr . _)
-dir="$REPOS/$selected"
+dir=""
+for repo_path in "${REPOS[@]}"; do
+  if [[ -d "$repo_path/$selected" ]]; then
+    dir="$repo_path/$selected"
+    break
+  fi
+done
+
 # some sessions do not have clearly defined cwd
 if [ ! -d "${dir}" ]; then
   dir="$HOME"
