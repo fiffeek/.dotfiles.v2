@@ -1,0 +1,5 @@
+---
+- name: Reload mako
+  listen: reload mako
+  ansible.builtin.command: makoctl reload
+  changed_when: true

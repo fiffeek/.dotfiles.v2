@@ -1,0 +1,14 @@
+sort=-time
+layer=top
+background-color=#282e49
+width=200
+height=70
+border-size=0
+border-color=#282e49
+border-radius=10
+padding=10
+icons=1
+max-icon-size=64
+default-timeout=5000
+ignore-timeout=1
+font=Iosevka Nerd Font Mono 10
