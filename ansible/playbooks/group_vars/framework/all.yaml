@@ -176,6 +176,18 @@ modules:
         dest: "{{ configs_home }}/electron-flags.conf"
       - src: "{{ dotfiles_source_dir }}/xdg/user-dirs.dirs"
         dest: "{{ configs_home }}/user-dirs.dirs"
+  - name: screenshot
+    tag: ss
+    packages:
+      - name: grim
+        state: latest
+        source: pacman
+      - name: flameshot-git
+        state: latest
+        source: aur
+    links:
+      - src: "{{ dotfiles_source_dir }}/flameshot/flameshot.ini"
+        dest: "{{ configs_home }}/flameshot/flameshot.ini"
   - name: mako
     tag: mako
     packages:
