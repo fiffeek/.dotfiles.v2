@@ -1,0 +1,11 @@
+---
+- name: Copy rule {{ item.rule }}
+  ansible.builtin.lineinfile:
+    path: "{{ item.dest | d('/etc/udev/rules.d/99-rest.rules') }}"
+    line: "{{ item.rule }}"
+    create: true
+    mode: "0644"
+    owner: "{{ item.owner | d('root') }}"
+    group: "{{ item.group | d('root') }}"
+  become: "{{ item.become | d(True) | bool }}"
+  notify: reload udev rules

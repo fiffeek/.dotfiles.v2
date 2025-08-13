@@ -1,0 +1,4 @@
+---
+- name: Ensure services are managed "{{ custom_systemd_services | map(attribute='name') }}"
+  ansible.builtin.include_tasks: service.yaml
+  with_items: "{{ custom_systemd_services }}"

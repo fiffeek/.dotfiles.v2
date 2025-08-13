@@ -1,0 +1,10 @@
+---
+- name: Copy file {{ item.src }}
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | d('root') }}"
+    group: "{{ item.group | d('root') }}"
+    mode: "{{ item.mode | d('0644') }}"
+    force: "{{ item.force | d(True) | bool }}"
+  become: "{{ item.become | d(True) | bool }}"

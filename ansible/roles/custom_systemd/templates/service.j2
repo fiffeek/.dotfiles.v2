@@ -1,0 +1,11 @@
+[Unit]
+Description={{ item.description }}
+After={{ item.after | d('default.target') }}
+
+[Service]
+Type={{ item.type | d('oneshot') }}
+ExecStart={{ item.exec_start }}
+Environment="PATH={{ binaries_home }}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[Install]
+WantedBy={{ item.wanted_by | d('default.target') }}

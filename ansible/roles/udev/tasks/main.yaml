@@ -1,0 +1,4 @@
+---
+- name: Ensure rules are managed "{{ udev_rules | map(attribute='rule') }}"
+  ansible.builtin.include_tasks: rule.yaml
+  with_items: "{{ udev_rules }}"

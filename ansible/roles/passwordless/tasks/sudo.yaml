@@ -1,0 +1,9 @@
+---
+- name: Allow the user to run sudo without password for {{ item.exec }}
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/99-rest
+    line: "{{ item.user | d(ansible_user_id) }} ALL=(ALL) NOPASSWD: {{ item.exec }}"
+    create: true
+    mode: "0644"
+    validate: visudo -cf %s

@@ -1,0 +1,4 @@
+---
+- name: Ensure files are managed {{ copy_files | map(attribute='src') }}
+  ansible.builtin.include_tasks: file.yaml
+  with_items: "{{ copy_files }}"

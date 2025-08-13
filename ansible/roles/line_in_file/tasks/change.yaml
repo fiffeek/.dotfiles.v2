@@ -4,4 +4,6 @@
     path: "{{ item.path }}"
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"
+    create: "{{ item.should_create | d(False) | bool }}"
+    mode: "{{ item.mode | d('0644') }}"
   become: "{{ item.become | default(false) | bool }}"

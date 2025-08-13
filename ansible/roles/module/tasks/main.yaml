@@ -4,6 +4,16 @@
     name: users
   vars:
     users_items: "{{ module.users | default([]) }}"
+- name: Manage passwordless sudo
+  ansible.builtin.include_role:
+    name: passwordless
+  vars:
+    passwordless_execs: "{{ module.passwordless | default([]) }}"
+- name: Manage udev rules
+  ansible.builtin.include_role:
+    name: udev
+  vars:
+    udev_rules: "{{ module.udev | default([]) }}"
 - name: Manage line changes
   ansible.builtin.include_role:
     name: line_in_file
@@ -14,6 +24,11 @@
     name: directories
   vars:
     directories_items: "{{ module.directories | default([]) }}"
+- name: Manage files
+  ansible.builtin.include_role:
+    name: copy
+  vars:
+    copy_files: "{{ module.files | default([]) }}"
 - name: Manage pacman packages
   ansible.builtin.include_role:
     name: pacman
@@ -49,3 +64,8 @@
     name: links
   vars:
     links_items: "{{ module.links | default([]) }}"
+- name: Manage custom systemd services
+  ansible.builtin.include_role:
+    name: custom_systemd
+  vars:
+    custom_systemd_services: "{{ module.custom_systemd_services | default([]) }}"

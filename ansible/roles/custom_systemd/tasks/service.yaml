@@ -1,0 +1,17 @@
+---
+- name: Create systemd service {{ item.name }}
+  ansible.builtin.template:
+    src: service.j2
+    dest: /home/{{ ansible_user_id }}/.config/systemd/user/{{ item.name }}.service
+    mode: "{{ item.mode | d('0644') }}"
+  become: "{{ item.become | d(False) | bool }}"
+  notify:
+    - reload systemctl
+- name: Run handlers if any to reload the services
+  ansible.builtin.meta: flush_handlers
+- name: Enable service {{ item.name }}
+  ansible.builtin.systemd:
+    name: "{{ item.name }}.service"
+    enabled: true
+    scope: "{{ item.scope | d('user') }}"
+  become: "{{ item.become | d(False) | bool }}"

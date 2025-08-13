@@ -1,0 +1,8 @@
+---
+- name: Reload systemctl
+  ansible.builtin.systemd:
+    daemon_reload: true
+    scope: "{{ item.scope | d('user') }}"
+  become: "{{ item.become | d(False) | bool }}"
+  changed_when: true
+  listen: reload systemctl

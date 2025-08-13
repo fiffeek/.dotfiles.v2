@@ -1,0 +1,4 @@
+---
+- name: Allow for passwordless sudo {{ passwordless_execs | map(attribute='exec') }}
+  ansible.builtin.include_tasks: sudo.yaml
+  with_items: "{{ passwordless_execs }}"
