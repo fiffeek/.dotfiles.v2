@@ -10,8 +10,6 @@ ANSIBLE_BASE := ansible-playbook
 ANSIBLE_GALAXY_BASE := ansible-galaxy
 ANSIBLE_GALAXY_REQUIREMENTS := requirements.yml
 
-.PHONY: provisioning
-
 install: $(ANSIBLE_GALAXY_REQUIREMENTS)
 	$(ANSIBLE_GALAXY_BASE) collection install \
 		-r $(ANSIBLE_GALAXY_REQUIREMENTS)

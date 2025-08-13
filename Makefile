@@ -15,8 +15,6 @@ ifdef ONLY_MODULE
 EXTRA_ARGS := --extra-vars "only_module=$(ONLY_MODULE)"
 endif
 
-.PHONY: provisioning
-
 install: $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
 
 $(INSTALL_DIR)/.dir.stamp:
