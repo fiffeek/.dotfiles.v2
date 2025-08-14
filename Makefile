@@ -15,13 +15,13 @@ ifdef ONLY_MODULE
 EXTRA_ARGS := --extra-vars "only_module=$(ONLY_MODULE)"
 endif
 
-install: $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
+install: $(INSTALL_DIR)/.dir.stamp $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
 
 $(INSTALL_DIR)/.dir.stamp:
 	mkdir -p $(INSTALL_DIR)
 	touch $@
 
-$(INSTALL_DIR)/.venv.stamp: $(REQUIREMENTS_FILE) $(INSTALL_DIR)/.dir.stamp $(INSTALL_DIR)/.asdf.python.stamp
+$(INSTALL_DIR)/.venv.stamp: $(REQUIREMENTS_FILE) $(INSTALL_DIR)/.asdf.python.stamp
 	test -d "$(VENV)" || $(PYTHON_BIN) -m venv "$(VENV)"
 	. "$(VENV)/bin/activate"; \
 		pip install --upgrade pip; \
