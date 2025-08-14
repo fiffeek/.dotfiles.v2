@@ -166,6 +166,10 @@ modules:
       - name: xdg-desktop-portal-hyprland
         state: latest
         source: pacman
+    udev:
+      - rule: >-
+          SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run --machine={{ ansible_user_id
+          }}@.host --user /home/{{ ansible_user_id }}/.bin/adjust-hypr-settings.sh"
     users:
       - name: "{{ ansible_user_id }}"
         groups: video,input
