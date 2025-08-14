@@ -186,6 +186,10 @@ modules:
         dest: "{{ binaries_home }}/adjust-refresh-rate.sh"
       - src: "{{ bin_source_dir }}/hypr/adjust-hypr-settings.sh"
         dest: "{{ binaries_home }}/adjust-hypr-settings.sh"
+      - src: "{{ dotfiles_source_dir }}/waybar"
+        dest: "{{ configs_home }}/waybar"
+      - src: "{{ bin_source_dir }}/waybar/start.sh"
+        dest: "{{ binaries_home }}/waybar_start.sh"
     custom_systemd_services:
       - name: hypr-settings-on-boot
         description: Change hypr settings on system boot after hypr loads
@@ -196,6 +200,13 @@ modules:
         start:
           limit_burst: 10
           limit_interval_sec: 300
+      - name: waybar-top
+        description: Run waybar top bar
+        exec_start: "{{ binaries_home }}/waybar_start.sh"
+        type: simple
+        restart:
+          mode: always
+          sec: 1
   - name: info
     tag: info
     packages:

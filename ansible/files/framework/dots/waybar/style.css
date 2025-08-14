@@ -1,0 +1,85 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: Iosevka Nerd Font Propo;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: #c9d1d9;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: #c9d1d9;
+  background: rgba(36, 40, 59, 0.85);
+  margin: 0 4px;
+  border-radius: 5px;
+}
+
+#workspaces button.active {
+  color: #58a6ff;
+  background: rgba(56, 139, 253, 0.2);
+}
+
+#workspaces button:hover {
+  background: rgba(56, 139, 253, 0.15);
+}
+
+#clock,
+#backlight,
+#battery,
+#temperature,
+#bluetooth,
+#wireplumber,
+#custom-homelab-vpn,
+#custom-power-mode,
+#network {
+  padding: 0 10px;
+  margin: 0 4px;
+  border-radius: 5px;
+  background: rgba(36, 40, 59, 0.85);
+}
+
+
+#disk {
+  padding: 0 5px 0 10px;
+  margin-left: 4px;
+  border-radius: 5px 0px 0px 5px;
+  background: rgba(36, 40, 59, 0.85);
+}
+
+#cpu {
+  padding: 0 5px;
+  border-radius: 0px;
+  background: rgba(36, 40, 59, 0.85);
+}
+
+#memory {
+  padding: 0 10px 0 5px;
+  margin-right: 4px;
+  border-radius: 0px 5px 5px 0px;
+  background: rgba(36, 40, 59, 0.85);
+}
+
+#custom-homelab-vpn.deactivated,
+#bluetooth.disabled,
+#bluetooth.off {
+  color: #c9d1d9;
+}
+
+
+#custom-homelab-vpn.activated,
+#bluetooth.connected,
+#bluetooth.on {
+  color: #7dcfff;
+}
+
+tooltip {
+  background: #161b22;
+  color: #c9d1d9;
+  border-radius: 5px;
+  padding: 4px 8px;
+}

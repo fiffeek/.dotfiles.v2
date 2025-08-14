@@ -1,0 +1,98 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["battery", "backlight",  "temperature", "wireplumber",],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["custom/power-mode", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
+
+  "margin": "8px 16px -12px",
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "persistent-workspaces": {
+      "DP-10":[2,3,4,5,6]
+    },
+  },
+
+  "clock": {
+    "interval": 60,
+    "format": "󰅐 {:%H:%M}",
+    "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
+  },
+
+  "cpu": {
+    "interval": 60,
+    "format": "CPU: {usage}%",
+    "tooltip": true,
+  },
+
+  "disk": {
+    "interval": 120,
+    "format": "ROOT: {percentage_used}%",
+    "path": "/"
+  },
+
+  "memory": {
+    "interval": 60,
+    "format": "MEM: {percentage}%",
+    "tooltip-format": "MEM_TOT\t: {total}GiB\nSWP_TOT\t: {swapTotal}GiB\n\nMEM_USD\t: {used:0.1f}GiB\nSWP_USD\t: {swapUsed:0.1f}GiB",
+  },
+
+  "battery": {
+    "interval": 60,
+    "format": "{icon} {capacity}%  󱐥 {power:4.2f}W  󰔟 {time}",
+    "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁"],
+    "format-time": "{H}:{m}",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "tooltip-format": "POWER: {power}W\nSTATUS: {timeTo}\nCYCLES: {cycles}\nHEALTH: {health}",
+    "states": {
+      "warning": 30,
+      "critical": 10,
+    }
+  },
+
+  "bluetooth": {
+    "interval": 60,
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-on": "󰂯",
+    "format-connected": "󰂱",
+  },
+
+ "temperature": {
+    "format": " {temperatureC}°C",
+    "interval": 60,
+  },
+
+  "backlight": {
+      "device": "amdgpu_bl1",
+      "format": "󰃟 {percent}%",
+  },
+
+"wireplumber": {
+    "format": "{icon} {volume}%  {format_source}",
+    "tooltip-format": "{volume}%",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭",
+    "format-muted": "󰝟  {format_source}",
+    "format-icons": {
+      "default": ["", " ", " "]
+    },
+  },
+
+  "custom/homelab-vpn": {
+    "exec": "~/.config/waybar/bin/vpn_status.sh homelab",
+    "return-type": "json",
+    "interval": 60,
+    "format": "󰣫",
+  },
+
+  "custom/power-mode": {
+    "exec": "~/.config/waybar/bin/laptop_mode.sh",
+    "return-type": "json",
+    "interval": 60,
+    "format": "{text}",
+  }
+
+}
