@@ -20,6 +20,7 @@ repos:
     rev: v0.10.0.1
     hooks:
       - id: shellcheck
+        entry: shellcheck --shell=bash
   - repo: local
     hooks:
       - id: mbake-format
