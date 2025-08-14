@@ -1,0 +1,11 @@
+---
+- name: Reload grub cfg
+  ansible.builtin.command: sudo grub-mkconfig -o /boot/grub/grub.cfg
+  become: true
+  changed_when: true
+  listen: grub-mkconfig
+- name: Reload mkinitcpio
+  ansible.builtin.command: sudo mkinitcpio -P
+  become: true
+  changed_when: true
+  listen: mkinitcpio
