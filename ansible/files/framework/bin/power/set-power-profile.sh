@@ -55,7 +55,6 @@ performance() {
   # but seems ppd set it anyway?
   set_epp "performance"
   gpu_level "auto"
-  adjust-refresh-rate.sh || true
   wifi_level "performance"
   aspm_level "default"
   display_backlight_level "25%"
@@ -70,7 +69,6 @@ powersaver() {
   sudo cpupower set --turbo-boost 0
   set_epp "power"
   gpu_level "low"
-  adjust-refresh-rate.sh || true
   wifi_level "powersave"
   aspm_level "powersupersave"
   display_backlight_level "1%"

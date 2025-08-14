@@ -1,11 +1,21 @@
 [Unit]
 Description={{ item.description }}
 After={{ item.after | d('default.target') }}
+{% if item.start is defined %}
+StartLimitBurst={{ item.start.limit_burst | d('1') }}
+StartLimitIntervalSec={{ item.start.limit_interval_sec | d('10') }}
+{%- endif %}
+
 
 [Service]
 Type={{ item.type | d('oneshot') }}
 ExecStart={{ item.exec_start }}
 Environment="PATH={{ binaries_home }}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+{% if item.restart is defined %}
+Restart={{ item.restart.mode | d('no') }}
+RestartSec={{ item.restart.sec | d('10') }}
+{%- endif %}
+
 
 [Install]
 WantedBy={{ item.wanted_by | d('default.target') }}

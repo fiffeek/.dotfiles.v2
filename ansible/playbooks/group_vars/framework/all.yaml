@@ -176,6 +176,22 @@ modules:
         dest: "{{ configs_home }}/electron-flags.conf"
       - src: "{{ dotfiles_source_dir }}/xdg/user-dirs.dirs"
         dest: "{{ configs_home }}/user-dirs.dirs"
+      - src: "{{ bin_source_dir }}/hypr/import-env.sh"
+        dest: "{{ binaries_home }}/import-env.sh"
+      - src: "{{ bin_source_dir }}/hypr/adjust-refresh-rate.sh"
+        dest: "{{ binaries_home }}/adjust-refresh-rate.sh"
+      - src: "{{ bin_source_dir }}/hypr/adjust-hypr-settings.sh"
+        dest: "{{ binaries_home }}/adjust-hypr-settings.sh"
+    custom_systemd_services:
+      - name: hypr-settings-on-boot
+        description: Change hypr settings on system boot after hypr loads
+        exec_start: "{{ binaries_home }}/adjust-hypr-settings.sh"
+        restart:
+          mode: on-failure
+          sec: 30
+        start:
+          limit_burst: 10
+          limit_interval_sec: 300
   - name: info
     tag: info
     packages:
@@ -418,8 +434,6 @@ modules:
         become: true
         should_create: false
     links:
-      - src: "{{ bin_source_dir }}/power/adjust-refresh-rate.sh"
-        dest: "{{ binaries_home }}/adjust-refresh-rate.sh"
       - src: "{{ bin_source_dir }}/power/set-power-profile.sh"
         dest: "{{ binaries_home }}/set-power-profile.sh"
       - src: "{{ bin_source_dir }}/power/power-profile-on-boot.sh"
