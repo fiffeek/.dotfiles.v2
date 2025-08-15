@@ -1,0 +1,5 @@
+configuration {
+    show-icons: false;
+    font: "Iosevka Nerd Font Propo 14";
+    fixed-num-lines: true;
+}

@@ -1,0 +1,111 @@
+* {
+	font 				: "Iosevka Nerd Font Propo 14";
+}
+
+* {
+    bg0: #0d1117;  /* Main background */
+    bg1: #161b22;  /* Input bar background */
+    bg2: #21262d;  /* Message box / secondary background */
+    bg3: #30363d;  /* Selection background / border */
+    fg0: #c9d1d9;  /* Main text */
+    fg1: #ffffff;  /* Bright text */
+    fg2: #8b949e;  /* Prompt / subtle text */
+    fg3: #484f58;  /* Placeholder text */}
+
+* {
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+}
+
+window {
+    location:       north;
+    y-offset:       80px;
+    width:          1200;
+    border-radius:  8px;
+    border-color:   @bg3;
+
+    border:         2px;
+
+    background-color:   @bg0;
+}
+
+mainbox {
+    padding:    12px;
+}
+
+inputbar {
+    background-color:   @bg1;
+    border-color:       @bg3;
+
+    border:         2px;
+    border-radius:  8px;
+
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
+}
+
+prompt {
+    text-color: @fg2;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @fg3;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      8px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     12px 0 0;
+    lines:      8;
+    columns:    1;
+
+    fixed-height: false;
+}
+
+element {
+    padding:        8px 16px;
+    spacing:        8px;
+    border-radius:  8px;
+}
+
+element normal active {
+    text-color: @bg3;
+}
+
+element alternate active {
+    text-color: @bg3;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg3;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+}
+
+element selected {
+    text-color: @bg1;
+}
