@@ -219,15 +219,21 @@ modules:
   - name: screenshot
     tag: ss
     packages:
+      - name: hyprpicker
+        state: latest
+        source: pacman
       - name: grim
         state: latest
         source: pacman
-      - name: flameshot-git
+      - name: jq
+        state: latest
+        source: pacman
+      - name: slurp
+        state: latest
+        source: pacman
+      - name: hyprshot-git
         state: latest
         source: aur
-    links:
-      - src: "{{ dotfiles_source_dir }}/flameshot/flameshot.ini"
-        dest: "{{ configs_home }}/flameshot/flameshot.ini"
   - name: mako
     tag: mako
     packages:
