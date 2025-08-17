@@ -76,6 +76,19 @@ modules:
       - name: ttf-iosevka-nerd
         state: latest
         source: pacman
+  - name: colors
+    tag: cc
+    packages:
+      - name: wallust-git
+        source: aur
+        state: latest
+    links:
+      - src: "{{ dotfiles_source_dir }}/wallust"
+        dest: "{{ configs_home }}/wallust"
+        # generate the theme stubs
+        notify: wallust
+      - src: "{{ bin_source_dir }}/wallust/theme.sh"
+        dest: "{{ binaries_home }}/wallust-theme.sh"
   - name: browsers
     tag: b
     packages:
@@ -209,8 +222,11 @@ modules:
         exec_start: "{{ binaries_home }}/waybar_start.sh"
         type: simple
         restart:
-          mode: always
-          sec: 1
+          mode: on-failure
+          sec: 5
+        start:
+          limit_burst: 10
+          limit_interval_sec: 5
   - name: info
     tag: info
     packages:

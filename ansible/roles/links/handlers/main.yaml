@@ -1,0 +1,6 @@
+---
+- name: Generate color stubs
+  # theme does not matter; the stuvs are needed for imports to other files
+  listen: wallust theme Github-Dark --skip-sequences
+  ansible.builtin.command: wallust
+  changed_when: true

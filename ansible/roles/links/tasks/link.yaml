@@ -10,3 +10,4 @@
     dest: "{{ item.dest }}"
     state: link
     force: true
+  notify: "{{ item.notify | d([]) }}"
