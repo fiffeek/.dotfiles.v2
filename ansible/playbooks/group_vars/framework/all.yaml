@@ -86,7 +86,8 @@ modules:
       - src: "{{ dotfiles_source_dir }}/wallust"
         dest: "{{ configs_home }}/wallust"
         # generate the theme stubs
-        notify: wallust
+        notify:
+          - wallust
       - src: "{{ bin_source_dir }}/wallust/theme.sh"
         dest: "{{ binaries_home }}/wallust-theme.sh"
   - name: browsers
