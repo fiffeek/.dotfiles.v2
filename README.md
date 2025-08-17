@@ -1,4 +1,4 @@
-# Dotfiles env managed by ansible
+# Dotfiles managed by ansible
 
 This is the second spin on the dotfiles automation with ansible.
 Notable changes from [v1](https://github.com/fiffeek/.dotfiles) is the
@@ -9,10 +9,18 @@ This allows for using a [custom DSL](https://github.com/fiffeek/.dotfiles.v2/blo
 to define the components, making each `module` (a bunch of ansible roles)
 responsible for a self-sufficient part of the system (e.g. hyprland).
 
+
+## Hardware
+Some of the modules are tied specifically to the hardware the software runs on --
+[Framework 13 with AMD 7840u](https://www.notebookcheck.net/Framework-Laptop-13-5-Ryzen-7-7840U-review-So-much-better-than-the-Intel-version.756613.0.html).
+Two major things for the battery life enhancements were:
+* replacing the default mediatek Wi-Fi card with [Intel AX210 non v-pro](https://frame.work/pl/en/products/intel-wi-fi-6e-ax210?v=FRANBWNT04)
+* putting in the [120hz screen with VRR](https://universal-blue.discourse.group/t/vrr-on-framework-with-2-8k-screens/4677)
+
 ## Repo usage
 
 ```bash
-# install asdf to pull python & setup venv
+# install asdf to pull python (pyenv) & setup venv
 make install
 # debug, no changes applied
 make MODE=debug provisioning
@@ -23,8 +31,18 @@ make provisioning
 make MODE=debug ONLY_MODULE=bp provisioning
 ```
 
-## Perf and power usage
-TODO
+## Performance and power usage
+
+### Power draw
+The system is heavily tweaked for optimising power consumption (see [power](https://github.com/fiffeek/.dotfiles.v2/blob/main/ansible/playbooks/group_vars/framework/all.yaml#L398) module), this applies specifically to the hardware of the laptop so might not be transferable.
+With light usage (coding and browsing) pulls on average 8-10h of time on battery, idle is in the ballpark of 15h,
+video playback ~6-8h.
+
+| Task  | Draw  | Notes                            |
+| ----- | ----- | -------------------------------- |
+| idle  | 3.5W  | wifi on, bluetooth off, 60hz vrr |
+| light | 4-8W  | firefox browsing, tmux + nvim, 60hz vrr |
+| video | 7-10W | 720p 60fps ff video with hardware acc |
 
 ## Related projects & credits
 
