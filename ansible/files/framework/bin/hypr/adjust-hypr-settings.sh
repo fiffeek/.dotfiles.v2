@@ -17,10 +17,10 @@ if [ "$POWER_STATUS" -eq 1 ]; then
   hyprctl keyword decoration:blur:enabled true
   hyprctl keyword decoration:shadow:enabled true
   hyprctl keyword animations:enabled true
-  notify-send "Hyprland AC" || true
+  notify-send "Hyprland" "Running on AC config" || true
 else
   hyprctl keyword decoration:blur:enabled false
   hyprctl keyword decoration:shadow:enabled false
   hyprctl keyword animations:enabled false
-  notify-send "Hyprland BAT" || true
+  notify-send "Hyprland" "Running on BAT config" || true
 fi
