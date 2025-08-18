@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -g mode-style "fg=#{@tmux_primary},bg=#{@matugen_surface_container_high}"
+setw -g mode-style "bg=#{@matugen_inverse_surface},fg=#{@matugen_inverse_on_surface}"
 
 set -g message-style "fg=#{@matugen_primary},bg=#{@matugen_surface_container_high}"
 set -g message-command-style "fg=#{@matugen_primary},bg=#{@matugen_surface_container_high}"
