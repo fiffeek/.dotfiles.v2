@@ -85,6 +85,9 @@ modules:
       - name: matugen-git
         source: aur
         state: latest
+      - name: pywalfox
+        source: pip
+        version: 2.7.4
     links:
       - src: "{{ dotfiles_source_dir }}/wallust"
         dest: "{{ configs_home }}/wallust"
@@ -107,6 +110,8 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/firefox/chrome/userChrome.css"
         dest: "{{ firefox.profile }}/chrome/userChrome.css"
+      - src: "{{ dotfiles_source_dir }}/mozilla/native-messaging-hosts/pywalfox.json"
+        dest: "{{ firefox.native_messaging_hosts }}/pywalfox.json"
   - name: terminal
     tag: t
     packages:

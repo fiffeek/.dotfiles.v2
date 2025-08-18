@@ -6,6 +6,7 @@ linux_source_dir: "{{ playbook_dir }}/../files/linux"
 binaries_home: "{{ lookup('env', 'HOME') }}/.bin"
 firefox:
   profile: "{{ lookup('env', 'HOME') }}/.mozilla/firefox/uya30cst.default"
+  native_messaging_hosts: "{{ lookup('env', 'HOME') }}/.mozilla/native-messaging-hosts"
 asdf:
   extra_env: ASDF_PYAPP_INCLUDE_DEPS=1
 repos:

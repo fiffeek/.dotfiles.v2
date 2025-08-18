@@ -9,6 +9,7 @@ function reload {
   systemctl --user restart waybar-top
   kill -SIGUSR1 "$(pidof kitty)"
   hyprctl reload
+  pywalfox update
 
   if command -v tmux >/dev/null 2>&1; then
     if tmux list-sessions -F '#S' >/dev/null 2>&1; then
