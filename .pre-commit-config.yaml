@@ -56,7 +56,7 @@ repos:
         types: [file]
       - id: format-mako-conf
         name: Format mako
-        entry: hooks/format-kitty.py
+        entry: hooks/format-mako.py
         language: system
         files: .*(mako|mako/config)$
         types: [file]

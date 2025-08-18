@@ -1,6 +1,11 @@
 ---
 - name: Generate color stubs
-  # theme does not matter; the stuvs are needed for imports to other files
-  listen: wallust theme Github-Dark --skip-sequences
-  ansible.builtin.command: wallust
+  # theme does not matter; the stubs are needed for imports to other files
+  ansible.builtin.command: wallust theme Github-Dark --skip-sequences
+  listen: wallust
+  changed_when: true
+- name: Generate matugen color stubs
+  # theme does not matter; the stubs are needed for imports to other files
+  ansible.builtin.command: matugen color hex "#ffbf9b"
+  listen: matugen
   changed_when: true

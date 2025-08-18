@@ -1,0 +1,25 @@
+[config]
+
+[templates.waybar]
+input_path = './templates/colors.css.tpl'
+output_path = '~/.config/waybar/generated-colors-matugen.css'
+
+[templates.rofi]
+input_path = './templates/rofi.rasi.tpl'
+output_path = '~/.config/rofi/themes/generated-colors-matugen.rasi'
+
+[templates.kitty]
+input_path = './templates/kitty.conf'
+output_path = '~/.config/kitty/generated-colors-matugen.conf'
+
+[templates.hypr]
+input_path = './templates/hypr.conf.tpl'
+output_path = '~/.config/hypr/config.d/generated-colors-matugen.conf'
+
+[templates.tmux]
+input_path = './templates/tmux.tpl'
+output_path = '~/.config/tmux/generated-colors-matugen.conf'
+
+[templates.mako]
+input_path = './templates/mako.tpl'
+output_path = '~/.config/mako/generated-colors-matugen.conf'

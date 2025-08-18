@@ -1,3 +1,14 @@
+@import './generated-colors-matugen.css';
+
+@define-color waybar-bg @matugen-surface_bright;
+@define-color waybar-on_bg @matugen-on_surface;
+@define-color waybar-primary @matugen-primary;
+@define-color waybar-on_primary @matugen-on_primary;
+@define-color waybar-critical @matugen-error;
+@define-color waybar-on_critical @matugen-on_error;
+@define-color waybar-warning @matugen_secondary;
+@define-color waybar-on_warning @matugen_on_secondary;
+
 * {
   border: none;
   border-radius: 0;
@@ -8,25 +19,47 @@
 
 window#waybar {
   background: transparent;
-  color: #c9d1d9;
+  color: @waybar-on_bg;
 }
 
 #workspaces button {
   padding: 0 8px;
   color: #c9d1d9;
-  background: rgba(36, 40, 59, 0.85);
+  background: @waybar-bg;
   margin: 0 4px;
   border-radius: 5px;
+  font-weight: bold;
+}
+
+button:hover {
+  box-shadow: none;
+  text-shadow: none;
+  background: none;
+  transition: none;
 }
 
 #workspaces button.active {
-  color: #58a6ff;
-  background: rgba(56, 139, 253, 0.2);
+  color: @waybar-on_primary;
+  background: @waybar-primary;
 }
 
-#workspaces button:hover {
-  background: rgba(56, 139, 253, 0.15);
+#disk {
+  padding: 0 5px 0 10px;
+  margin-left: 4px;
+  border-radius: 5px 0px 0px 5px;
 }
+
+#cpu {
+  padding: 0 5px;
+  border-radius: 0px;
+}
+
+#memory {
+  padding: 0 10px 0 5px;
+  margin-right: 4px;
+  border-radius: 0px 5px 5px 0px;
+}
+
 
 #clock,
 #backlight,
@@ -40,46 +73,52 @@ window#waybar {
   padding: 0 10px;
   margin: 0 4px;
   border-radius: 5px;
-  background: rgba(36, 40, 59, 0.85);
 }
 
 
-#disk {
-  padding: 0 5px 0 10px;
-  margin-left: 4px;
-  border-radius: 5px 0px 0px 5px;
-  background: rgba(36, 40, 59, 0.85);
+#clock,
+#backlight,
+#battery,
+#temperature,
+#bluetooth,
+#wireplumber,
+#custom-homelab-vpn,
+#custom-power-mode,
+#disk,
+#cpu,
+#memory,
+#network {
+  background: @waybar-bg;
 }
 
-#cpu {
-  padding: 0 5px;
-  border-radius: 0px;
-  background: rgba(36, 40, 59, 0.85);
+
+#battery.warning {
+  background: @waybar-warning;
+  color: @waybar-on_warning;
 }
 
-#memory {
-  padding: 0 10px 0 5px;
-  margin-right: 4px;
-  border-radius: 0px 5px 5px 0px;
-  background: rgba(36, 40, 59, 0.85);
+#battery.critical {
+  background: @waybar-critical;
+  color: @waybar-on_critical;
 }
 
 #custom-homelab-vpn.deactivated,
 #bluetooth.disabled,
 #bluetooth.off {
-  color: #c9d1d9;
+  color: @waybar-on_bg;
 }
 
 
 #custom-homelab-vpn.activated,
 #bluetooth.connected,
 #bluetooth.on {
-  color: #7dcfff;
+  color: @waybar-on_primary;
+  background: @waybar-primary;
 }
 
 tooltip {
-  background: #161b22;
-  color: #c9d1d9;
+  background: @waybar-bg;
+  color: @waybar-on_bg;
   border-radius: 5px;
   padding: 4px 8px;
 }

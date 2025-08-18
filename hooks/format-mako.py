@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path
 import sys
+import re
 
 for f in sys.argv[1:]:
     lines = Path(f).read_text().splitlines()
@@ -19,6 +20,7 @@ for f in sys.argv[1:]:
 
         if "=" in stripped:
             key, value = stripped.split("=", 1)
+            value = re.sub(r"\s+", " ", value.strip())
             out_lines.append(f"{key.strip()}={value.strip()}")
         else:
             out_lines.append(stripped)

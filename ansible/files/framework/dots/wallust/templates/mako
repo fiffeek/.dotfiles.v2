@@ -1,9 +1,0 @@
-background-color={{background}}
-border-color={{color2}}
-text-color={{foreground}}
-
-[urgency=high]
-border-color={{color4}}
-
-[urgency=low]
-border-color={{color0}}

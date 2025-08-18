@@ -82,14 +82,22 @@ modules:
       - name: wallust-git
         source: aur
         state: latest
+      - name: matugen-git
+        source: aur
+        state: latest
     links:
       - src: "{{ dotfiles_source_dir }}/wallust"
         dest: "{{ configs_home }}/wallust"
         # generate the theme stubs
         notify:
           - wallust
-      - src: "{{ bin_source_dir }}/wallust/theme.sh"
-        dest: "{{ binaries_home }}/wallust-theme.sh"
+      - src: "{{ bin_source_dir }}/wallust/solid-theme.sh"
+        dest: "{{ binaries_home }}/wallust-solid-theme.sh"
+      - src: "{{ dotfiles_source_dir }}/matugen"
+        dest: "{{ configs_home }}/matugen"
+        # generate the theme stubs
+        notify:
+          - matugen
   - name: browsers
     tag: b
     packages:
@@ -282,8 +290,8 @@ modules:
       - repo: https://github.com/tmux-plugins/tpm.git
         dest: "{{ configs_home }}/tmux/plugins/tpm"
     links:
-      - src: "{{ dotfiles_source_dir }}/tmux/tokyonight_night.tmux"
-        dest: "{{ configs_home }}/tmux/tokyonight_night.tmux"
+      - src: "{{ dotfiles_source_dir }}/tmux/theme.tmux"
+        dest: "{{ configs_home }}/tmux/theme.tmux"
       - src: "{{ dotfiles_source_dir }}/tmux/.tmux.conf"
         dest: "{{ configs_home }}/tmux/tmux.conf"
       - src: "{{ linux_source_dir }}/bin/tmux-switch.sh"

@@ -3,23 +3,11 @@ color_space = "lch"
 palette = "dark"
 
 [templates]
-hypr.template = 'hypr.conf'
-hypr.target = '~/.config/hypr/config.d/generated-colors.conf'
-
-rofi.template = 'rofi.rasi'
-rofi.target = '~/.config/rofi/themes/generated-colors.rasi'
-
-waybar.template = 'waybar.wall'
-waybar.target = '~/.config/waybar/generated-colors.css'
-
 kitty.template = 'kitty.conf'
 kitty.target = '~/.config/kitty/generated-colors.conf'
 
-mako.template = 'mako'
-mako.target = '~/.config/mako/generated-colors.conf'
-
-tmux.template = 'tmux.conf'
-tmux.target = '~/.config/tmux/generated-colors.conf'
-
 zsh.template = 'colors.zsh'
 zsh.target = '~/.config/zsh/config.d/generated-colors.zsh'
+
+matugen.template = 'matugen.tpl'
+matugen.target = '~/.config/matugen/generated-colors'
