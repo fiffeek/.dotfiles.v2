@@ -259,6 +259,8 @@ modules:
         dest: "{{ configs_home }}/rofi"
       - src: "{{ bin_source_dir }}/rofi/run.sh"
         dest: "{{ binaries_home }}/rofi-run.sh"
+      - src: "{{ bin_source_dir }}/rofi/theme-selector.sh"
+        dest: "{{ binaries_home }}/theme-selector.sh"
     custom_systemd_services:
       - name: hypr-settings-on-boot
         description: Change hypr settings on system boot after hypr loads
