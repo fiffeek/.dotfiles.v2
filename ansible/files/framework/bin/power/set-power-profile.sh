@@ -47,20 +47,26 @@ set_flag() {
   echo 1 >"$FLAG_LOCATION/$FLAG_FILENAME"
 }
 
+notify() {
+  notify-send \
+    --hint=string:synchronous:power-profile \
+    --hint=string:x-dunst-stack-tag:power-profile \
+    "$1 mode activated" "Power profile set to \`$1\` from\nset-power-profile.sh" || true
+}
+
 performance() {
   sudo cpupower frequency-set -g performance
   sudo cpupower set --turbo-boost 1
   sudo powerprofilesctl set performance
-  # epp driver only supports performance for now...
-  # but seems ppd set it anyway?
   set_epp "performance"
   gpu_level "auto"
   wifi_level "performance"
   aspm_level "default"
   display_backlight_level "25%"
   set_flag "performance" || true
-  notify-send 'Performance mode' || true
+  notify "Performance"
 }
+
 
 powersaver() {
   sudo cpupower frequency-set -g powersave
@@ -73,7 +79,7 @@ powersaver() {
   aspm_level "powersupersave"
   display_backlight_level "1%"
   set_flag "powersave" || true
-  notify-send 'Powersaver mode' || true
+  notify "Powersave"
 }
 
 (
