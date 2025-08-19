@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["battery", "backlight",  "temperature", "wireplumber",],
+  "modules-left": ["battery", "backlight",  "custom/cpu-temp", "custom/gpu-temp", "wireplumber",],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["custom/power-mode", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
 
@@ -60,8 +60,17 @@
     "format-connected": "󰂱",
   },
 
- "temperature": {
-    "format": " {temperatureC}°C",
+ "custom/cpu-temp": {
+    "format": " CPU: {text}°C",
+    "exec": "~/.config/waybar/bin/temp.sh k10temp",
+    "return-type": "json",
+    "interval": 60,
+  },
+
+ "custom/gpu-temp": {
+    "format": "GPU: {text}°C",
+    "exec": "~/.config/waybar/bin/temp.sh amdgpu",
+    "return-type": "json",
     "interval": 60,
   },
 
@@ -79,6 +88,10 @@
     "format-icons": {
       "default": ["", " ", " "]
     },
+    "states": {
+      "zero": 0,
+      "ok": 5,
+    }
   },
 
   "custom/homelab-vpn": {

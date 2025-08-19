@@ -6,8 +6,10 @@
 @define-color waybar-on_primary @matugen-on_primary;
 @define-color waybar-critical @matugen-error;
 @define-color waybar-on_critical @matugen-on_error;
-@define-color waybar-warning @matugen_secondary;
-@define-color waybar-on_warning @matugen_on_secondary;
+@define-color waybar-warning @matugen-tertiary_container;
+@define-color waybar-on_warning @matugen-on_tertiary_container;
+@define-color waybar-secondary_container @matugen-secondary_container;
+@define-color waybar-on_secondary_container @matugen-on_secondary_container;
 
 * {
   border: none;
@@ -43,17 +45,22 @@ button:hover {
   background: @waybar-primary;
 }
 
+/* left */
+#custom-cpu-temp,
 #disk {
   padding: 0 5px 0 10px;
   margin-left: 4px;
   border-radius: 5px 0px 0px 5px;
 }
 
+/* middle */
 #cpu {
   padding: 0 5px;
   border-radius: 0px;
 }
 
+/* right */
+#custom-gpu-temp,
 #memory {
   padding: 0 10px 0 5px;
   margin-right: 4px;
@@ -87,6 +94,8 @@ button:hover {
 #disk,
 #cpu,
 #memory,
+#custom-cpu-temp,
+#custom-gpu-temp,
 #network {
   background: @waybar-bg;
 }
@@ -108,7 +117,10 @@ button:hover {
   color: @waybar-on_bg;
 }
 
-
+#battery.charging,
+#wireplumber.muted,
+#wireplumber.zero,
+#wireplumber.source-muted,
 #custom-homelab-vpn.activated,
 #bluetooth.connected,
 #bluetooth.on {
