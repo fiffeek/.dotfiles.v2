@@ -2,6 +2,23 @@
 
 set -ex
 
+function notify {
+  notify-send \
+    --hint=string:synchronous:hypr-config \
+    --hint=string:x-dunst-stack-tag:hypr-config \
+    "Hyprland config change" "$1 config" || true
+}
+
+function adjust_settings {
+  SETTING="$1"
+  NOTIFICATION="$2"
+
+  hyprctl keyword decoration:blur:enabled $SETTING
+  hyprctl keyword decoration:shadow:enabled $SETTING
+  hyprctl keyword animations:enabled $SETTING
+  notify "$NOTIFICATION"
+}
+
 timeout=60
 
 while ! hyprctl monitors >/dev/null 2>&1 && [ "$timeout" -gt 0 ]; do
@@ -14,13 +31,7 @@ POWER_STATUS=$(cat /sys/class/power_supply/ACAD/online)
 adjust-refresh-rate.sh
 
 if [ "$POWER_STATUS" -eq 1 ]; then
-  hyprctl keyword decoration:blur:enabled true
-  hyprctl keyword decoration:shadow:enabled true
-  hyprctl keyword animations:enabled true
-  notify-send "Hyprland" "Running on AC config" || true
+  adjust_settings "true" "AC"
 else
-  hyprctl keyword decoration:blur:enabled false
-  hyprctl keyword decoration:shadow:enabled false
-  hyprctl keyword animations:enabled false
-  notify-send "Hyprland" "Running on BAT config" || true
+  adjust_settings "false" "BAT"
 fi
