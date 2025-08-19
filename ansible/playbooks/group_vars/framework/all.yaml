@@ -62,6 +62,9 @@ modules:
       - name: less
         state: latest
         source: pacman
+      - name: btop
+        state: latest
+        source: pacman
     line_in_file:
       - regexp: ^WIRELESS_REGDOM=.*
         line: WIRELESS_REGDOM="PL"
@@ -166,6 +169,30 @@ modules:
       - name: qt6-wayland
         state: latest
         source: pacman
+      - name: qt6ct-kde
+        state: latest
+        source: aur
+      - name: breeze-icons
+        state: latest
+        source: pacman
+      - name: papirus-icon-theme
+        state: latest
+        source: pacman
+      - name: breeze
+        state: latest
+        source: pacman
+      - name: breeze5
+        state: latest
+        source: pacman
+      - name: adw-gtk-theme
+        state: latest
+        source: pacman
+      - name: plasma-integration
+        state: latest
+        source: pacman
+      - name: kde-cli-tools
+        state: latest
+        source: pacman
       - name: waybar
         state: latest
         source: pacman
@@ -203,6 +230,14 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/hypr"
         dest: "{{ configs_home }}/hypr"
+      - src: "{{ dotfiles_source_dir }}/gtk-4.0"
+        dest: "{{ configs_home }}/gtk-4.0"
+      - src: "{{ dotfiles_source_dir }}/gtk-3.0"
+        dest: "{{ configs_home }}/gtk-3.0"
+      - src: "{{ dotfiles_source_dir }}/qt5ct/qt5ct.conf"
+        dest: "{{ configs_home }}/qt5ct/qt5ct.conf"
+      - src: "{{ dotfiles_source_dir }}/qt6ct/qt6ct.conf"
+        dest: "{{ configs_home }}/qt6ct/qt6ct.conf"
       - src: "{{ dotfiles_source_dir }}/electron/electron-flags.conf"
         dest: "{{ configs_home }}/electron-flags.conf"
       - src: "{{ dotfiles_source_dir }}/xdg/user-dirs.dirs"

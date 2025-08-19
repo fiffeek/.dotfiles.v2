@@ -11,3 +11,9 @@ zsh.target = '~/.config/zsh/config.d/generated-colors.zsh'
 
 matugen.template = 'matugen.tpl'
 matugen.target = '~/.config/matugen/generated-colors'
+
+nvim.template = 'pywal.tpl'
+nvim.target = '~/.cache/wal/nvim.json'
+
+vim.template = 'vim.tpl'
+vim.target = '~/.cache/wal/colors-wal.vim'
