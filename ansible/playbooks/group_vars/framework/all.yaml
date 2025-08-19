@@ -355,7 +355,7 @@ modules:
         value: Filip Mikina
         scope: global
   - name: nvim
-    tag: false
+    tag: nvim
     git_config:
       - name: core.editor
         value: nvim
