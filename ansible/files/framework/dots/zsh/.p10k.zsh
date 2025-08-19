@@ -21,6 +21,8 @@
 # `p10k configure` and pick "Lean" style. This will give you slick minimalist prompt while taking
 # advantage of Powerlevel10k features that aren't present in Pure.
 
+source ~/.config/zsh/config.d/generated-colors.zsh
+
 # Temporarily change options.
 'builtin' 'local' '-a' 'p10k_config_opts'
 [[ ! -o 'aliases'         ]] || p10k_config_opts+=('aliases')
@@ -38,13 +40,13 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # Prompt colors.
-  local grey='242'
-  local red='#FF5C57'
-  local yellow='#F3F99D'
-  local blue='#57C7FF'
-  local magenta='#FF6AC1'
-  local cyan='#9AEDFE'
-  local white='#F1F1F0'
+  local grey="$WALLUST_COLOR8"
+  local red="$WALLUST_COLOR9"
+  local yellow="$WALLUST_COLOR11"
+  local blue="$WALLUST_COLOR12"
+  local magenta="$WALLUST_COLOR13"
+  local cyan="$WALLUST_COLOR14"
+  local white="$WALLUST_COLOR15"
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
