@@ -10,4 +10,4 @@ hyprctl hyprpaper reload ",$WALLPAPER"
 wallust run "$WALLPAPER" --skip-sequences
 matugen image "$WALLPAPER"
 reload
-notify-send "Theme changed" "$THEME"
+notify-send "Theme changed" "$WALLPAPER"

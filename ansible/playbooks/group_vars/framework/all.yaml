@@ -466,6 +466,8 @@ modules:
       - repo: ssh://git@git.home:12222/fiffeek/homelab.git
         dest: "{{ repos.personal_home }}/homelab"
         version: main
+      - repo: git@github.com:fiffeek/wallpaper.git
+        dest: "{{ repos.personal_home }}/wallpaper"
   - name: forks and external repos
     tag: repo
     git_repos:
