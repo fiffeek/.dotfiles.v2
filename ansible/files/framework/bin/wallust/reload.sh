@@ -12,9 +12,15 @@ function reload_tmux {
       while read -r pane_process; do
         IFS=' ' read -ra pane_process <<<"$pane_process"
         if [[ "${pane_process[1]}" == "zsh" ]]; then
-          tmux send-keys -t "${pane_process[0]}" "source ~/.zshrc" C-m
+          tmux send-keys -t "${pane_process[0]}" "source ~/.p10k.zsh" C-m
         fi
       done
+  fi
+}
+
+function reload_obsidian {
+  if pgrep -fa '(obsidian|com\.obsidian\.Obsidian|appimage.*[Oo]bsidian)' >/dev/null; then
+    xdg-open 'obsidian://adv-uri?action=command&commandid=app%3Areload'
   fi
 }
 
@@ -30,5 +36,6 @@ function reload {
   kill -SIGUSR1 "$(pidof kitty)"
   hyprctl reload
   pywalfox update
+  reload_obsidian
   reload_tmux
 }
