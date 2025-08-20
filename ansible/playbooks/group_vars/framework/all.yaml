@@ -82,6 +82,12 @@ modules:
       - name: ttf-iosevka-nerd
         state: latest
         source: pacman
+  - name: yazi
+    tag: yazi
+    packages:
+      - name: yazi
+        state: latest
+        source: pacman
   - name: colors
     tag: cc
     packages:
@@ -109,6 +115,8 @@ modules:
         dest: "{{ binaries_home }}/wallust-wallpaper-theme.sh"
       - src: "{{ bin_source_dir }}/wallust/reload.sh"
         dest: "{{ binaries_home }}/wallust-reload.sh"
+      - src: "{{ bin_source_dir }}/wallust/random-wallpaper.sh"
+        dest: "{{ binaries_home }}/random-wallpaper.sh"
       - src: "{{ dotfiles_source_dir }}/matugen"
         dest: "{{ configs_home }}/matugen"
         # generate the theme stubs
