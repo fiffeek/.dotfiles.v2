@@ -20,14 +20,6 @@ return {
     end,
   },
   {
-    "akinsho/bufferline.nvim",
-    config = function()
-      require("bufferline").setup({
-        highlights = require("neopywal.theme.plugins.bufferline").setup(),
-      })
-    end,
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     enabled = true,
