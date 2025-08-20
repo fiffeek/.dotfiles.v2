@@ -20,6 +20,9 @@ modules:
       - name: git
         state: latest
         source: pacman
+      - name: git-lfs
+        state: latest
+        source: pacman
       - name: htop
         state: latest
         source: pacman
@@ -117,6 +120,10 @@ modules:
         dest: "{{ binaries_home }}/wallust-reload.sh"
       - src: "{{ bin_source_dir }}/wallust/random-wallpaper.sh"
         dest: "{{ binaries_home }}/random-wallpaper.sh"
+      - src: "{{ bin_source_dir }}/wallust/random-solid-theme.sh"
+        dest: "{{ binaries_home }}/random-solid-theme.sh"
+      - src: "{{ bin_source_dir }}/wallust/random-theme.sh"
+        dest: "{{ binaries_home }}/random-theme.sh"
       - src: "{{ dotfiles_source_dir }}/matugen"
         dest: "{{ configs_home }}/matugen"
         # generate the theme stubs
@@ -124,6 +131,10 @@ modules:
           - matugen
       - src: "{{ bin_source_dir }}/hyprpaper/control.sh"
         dest: "{{ binaries_home }}/control-hyprpaper.sh"
+    udev:
+      - rule: >-
+          SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run --machine={{ ansible_user_id
+          }}@.host --user /home/{{ ansible_user_id }}/.bin/random-theme.sh"
     custom_systemd_services:
       - name: hyprpaper
         description: Run hyprpaper daemon for IPC wallpaper handling
@@ -450,6 +461,8 @@ modules:
         dest: "{{ configs_home }}/zsh/config.d"
       - src: "{{ dotfiles_source_dir }}/fzf/.fzf.zsh"
         dest: "{{ ansible_env.HOME }}/.fzf.zsh"
+      - src: "{{ dotfiles_source_dir }}/fzf/.fzf.zsh"
+        dest: "{{ ansible_env.HOME }}/fzf.zsh"
   - name: prep home layout
     tag: dd
     directories:

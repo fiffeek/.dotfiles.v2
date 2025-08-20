@@ -16,6 +16,8 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export LD_LIBRARY_PATH=$HOME/.bin/lib:$LD_LIBRARY_PATH
 export PATH=$HOME/.spicetify:$PATH
 
+export FZF_PATH=$HOME
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 

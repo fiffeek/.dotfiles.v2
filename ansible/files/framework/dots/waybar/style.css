@@ -1,6 +1,6 @@
 @import './generated-colors-matugen.css';
 
-@define-color waybar-bg alpha(@matugen-surface_container-rgb, 0.5);
+@define-color waybar-bg alpha(@matugen-surface_container-rgb, 0.3);
 @define-color waybar-on_bg @matugen-on_surface;
 @define-color waybar-primary @matugen-primary;
 @define-color waybar-on_primary @matugen-on_primary;

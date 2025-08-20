@@ -14,6 +14,8 @@ function notify {
 
 function main {
   ACTION="$1"
+  STATE=$(systemctl --no-pager --user show hyprpaper | grep SubState)
+
   systemctl --user "$ACTION" hyprpaper
   # if started wait for it to be ready
   if [ "$ACTION" == "start" ]; then
@@ -22,7 +24,12 @@ function main {
       ((TIMEOUT--))
     done
   fi
-  notify "$1"
+
+  # if it was already running then do not send the notification
+  # when start was requested
+  if [[ ! "$STATE" =~ .*running.* ]] && [ "$ACTION" == "start" ]; then
+    notify "$1"
+  fi
 }
 
 (
