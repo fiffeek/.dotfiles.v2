@@ -1,6 +1,6 @@
 backend = "fastresize"
-color_space = "lch"
-palette = "softdark16"
+color_space = "labmixed"
+palette = "dark16"
 
 [templates]
 kitty.template = 'kitty.conf'
