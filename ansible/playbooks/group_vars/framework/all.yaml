@@ -114,6 +114,8 @@ modules:
         # generate the theme stubs
         notify:
           - matugen
+      - src: "{{ bin_source_dir }}/hyprpaper/control.sh"
+        dest: "{{ binaries_home }}/control-hyprpaper.sh"
     custom_systemd_services:
       - name: hyprpaper
         description: Run hyprpaper daemon for IPC wallpaper handling

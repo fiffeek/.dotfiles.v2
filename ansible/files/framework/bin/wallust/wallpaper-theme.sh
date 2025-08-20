@@ -5,7 +5,7 @@ source $HOME/.bin/wallust-reload.sh
 set -e
 
 WALLPAPER="$1"
-(systemctl --user start hyprpaper && sleep 2) || true
+control-hyprpaper.sh start || true
 hyprctl hyprpaper reload ",$WALLPAPER"
 wallust run "$WALLPAPER" --skip-sequences
 matugen image "$WALLPAPER"
