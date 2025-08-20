@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WALLUST_LOCK=/tmp/wallust-wallpaper.lock
+
 function reload_tmux {
   if command -v tmux >/dev/null 2>&1; then
     if tmux list-sessions -F '#S' >/dev/null 2>&1; then
