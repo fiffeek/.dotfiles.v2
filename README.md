@@ -31,10 +31,16 @@ make provisioning
 make MODE=debug ONLY_MODULE=bp provisioning
 ```
 
+## Theming
+Theming is done by piping [wallust](https://codeberg.org/explosion-mental/wallust) to [matugen](https://github.com/InioX/matugen),
+the former being good at terminal coloring while the latter is much better
+for UI elements, see [wallust templates](https://github.com/fiffeek/.dotfiles.v2/tree/main/ansible/files/framework/dots/wallust/templates)
+and [matugen](https://github.com/fiffeek/.dotfiles.v2/tree/main/ansible/files/framework/dots/matugen/templates).
+
 ## Performance and power usage
 
 ### Power draw
-The system is heavily tweaked for optimising power consumption (see [power](https://github.com/fiffeek/.dotfiles.v2/blob/main/ansible/playbooks/group_vars/framework/all.yaml#L398) module), this applies specifically to the hardware of the laptop so might not be transferable.
+The system is heavily tweaked for optimising power consumption (see the [power management script](https://github.com/fiffeek/.dotfiles.v2/blob/main/ansible/files/framework/bin/power/set-power-profile.sh) module), this applies specifically to the hardware of the laptop so might not be transferable.
 With light usage (coding and browsing) pulls on average 8-10h of time on battery, idle is in the ballpark of 15h,
 video playback ~6-8h.
 
@@ -49,3 +55,6 @@ video playback ~6-8h.
 * [lots of useful patterns and scripts from theprimeagen's dev](https://github.com/ThePrimeagen/dev)
 * [ansible dsl pattern from A's dotfiles](github.com/A/.dotfiles/tree/master)
 * [folke's dots for widgets](https://github.com/folke/dot/tree/master/config)
+* [JaKooLit's dots for rofi scripting and theming](https://github.com/JaKooLit/Hyprland-Dots/tree/main)
+* [Matugen templates from Abhra00's Matuprland'](https://github.com/Abhra00/Matuprland)
+* [Wallust templated from helixoid's dots](https://github.com/helixoid/hyprland-wallust)

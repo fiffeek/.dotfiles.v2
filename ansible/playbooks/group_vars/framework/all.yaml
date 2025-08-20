@@ -85,6 +85,9 @@ modules:
   - name: colors
     tag: cc
     packages:
+      - name: hyprpaper
+        state: latest
+        source: pacman
       - name: wallust-git
         source: aur
         state: latest
@@ -102,11 +105,26 @@ modules:
           - wallust
       - src: "{{ bin_source_dir }}/wallust/solid-theme.sh"
         dest: "{{ binaries_home }}/wallust-solid-theme.sh"
+      - src: "{{ bin_source_dir }}/wallust/wallpaper-theme.sh"
+        dest: "{{ binaries_home }}/wallust-wallpaper-theme.sh"
+      - src: "{{ bin_source_dir }}/wallust/reload.sh"
+        dest: "{{ binaries_home }}/wallust-reload.sh"
       - src: "{{ dotfiles_source_dir }}/matugen"
         dest: "{{ configs_home }}/matugen"
         # generate the theme stubs
         notify:
           - matugen
+    custom_systemd_services:
+      - name: hyprpaper
+        description: Run hyprpaper daemon for IPC wallpaper handling
+        exec_start: "hyprpaper"
+        type: simple
+        restart:
+          mode: on-failure
+          sec: 5
+        start:
+          limit_burst: 10
+          limit_interval_sec: 5
   - name: browsers
     tag: b
     packages:
@@ -154,9 +172,6 @@ modules:
   - name: hyprland
     tag: h
     packages:
-      - name: hyprpaper
-        state: latest
-        source: pacman
       - name: hyprland
         state: latest
         source: pacman

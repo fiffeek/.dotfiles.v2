@@ -31,7 +31,9 @@ POWER_STATUS=$(cat /sys/class/power_supply/ACAD/online)
 adjust-refresh-rate.sh
 
 if [ "$POWER_STATUS" -eq 1 ]; then
+  systemctl --user start hyprpaper || true
   adjust_settings "true" "AC"
 else
+  systemctl --user stop hyprpaper || true
   adjust_settings "false" "BAT"
 fi
