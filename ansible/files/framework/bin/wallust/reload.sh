@@ -12,7 +12,7 @@ function reload_tmux {
       while read -r pane_process; do
         IFS=' ' read -ra pane_process <<<"$pane_process"
         if [[ "${pane_process[1]}" == "zsh" ]]; then
-          tmux send-keys -t "${pane_process[0]}" "source ~/.p10k.zsh" C-m
+          tmux send-keys -t "${pane_process[0]}" "source ~/.p10k.zsh; clear" C-m
         fi
       done
   fi
