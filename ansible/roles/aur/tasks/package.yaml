@@ -2,7 +2,7 @@
 - name: Install package {{ item.name }}
   kewlfft.aur.aur:
     name: "{{ item.name }}"
-    use: makepkg
+    use: "{{ item.helper | d('makepkg') }}"
     state: present
   become: true
   become_user: "{{ ansible_user_id }}"

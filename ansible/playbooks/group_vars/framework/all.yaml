@@ -5,6 +5,9 @@ modules:
   - name: base packages
     tag: bp
     packages:
+      - name: reflector
+        state: latest
+        source: pacman
       - name: acpi
         state: latest
         source: pacman
@@ -68,6 +71,9 @@ modules:
       - name: btop
         state: latest
         source: pacman
+      - name: paru
+        state: latest
+        source: aur
     line_in_file:
       - regexp: ^WIRELESS_REGDOM=.*
         line: WIRELESS_REGDOM="PL"
@@ -138,7 +144,7 @@ modules:
     custom_systemd_services:
       - name: hyprpaper
         description: Run hyprpaper daemon for IPC wallpaper handling
-        exec_start: "hyprpaper"
+        exec_start: hyprpaper
         type: simple
         restart:
           mode: on-failure
@@ -244,6 +250,9 @@ modules:
       - name: udiskie
         state: latest
         source: pacman
+      - name: archlinux-xdg-menu
+        state: latest
+        source: pacman
       - name: dolphin
         state: latest
         source: pacman
@@ -326,6 +335,22 @@ modules:
       - name: tldr
         version: 3.4.1
         source: pip
+  - name: video
+    tag: video
+    packages:
+      - name: vlc
+        state: latest
+        source: pacman
+      - name: vlc-plugin-ffmpeg
+        state: latest
+        source: pacman
+      - name: vlc-plugin-pipewire
+        state: latest
+        source: aur
+        helper: paru
+      - name: vlc-gui-qt
+        state: latest
+        source: pacman
   - name: screenshot
     tag: ss
     packages:
@@ -344,6 +369,16 @@ modules:
       - name: hyprshot-git
         state: latest
         source: aur
+      - name: wl-screenrec-git
+        state: latest
+        source: aur
+        helper: paru
+      - name: satty
+        state: latest
+        source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/satty"
+        dest: "{{ configs_home }}/satty"
   - name: mako
     tag: mako
     packages:

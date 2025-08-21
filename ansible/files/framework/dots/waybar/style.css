@@ -1,6 +1,7 @@
 @import './generated-colors-matugen.css';
 
 @define-color waybar-bg alpha(@matugen-surface_container-rgb, 0.3);
+@define-color waybar-tooltip-bg alpha(@matugen-surface_container-rgb, 0.85);
 @define-color waybar-on_bg @matugen-on_surface;
 @define-color waybar-primary @matugen-primary;
 @define-color waybar-on_primary @matugen-on_primary;
@@ -67,7 +68,7 @@ button:hover {
   border-radius: 0px 5px 5px 0px;
 }
 
-
+/* neutrally separated */
 #clock,
 #backlight,
 #battery,
@@ -76,6 +77,7 @@ button:hover {
 #wireplumber,
 #custom-homelab-vpn,
 #custom-power-mode,
+#custom-recording,
 #network {
   padding: 0 10px;
   margin: 0 4px;
@@ -96,6 +98,7 @@ button:hover {
 #memory,
 #custom-cpu-temp,
 #custom-gpu-temp,
+#custom-recording,
 #network {
   background: @waybar-bg;
 }
@@ -123,13 +126,14 @@ button:hover {
 #wireplumber.source-muted,
 #custom-homelab-vpn.activated,
 #bluetooth.connected,
+#custom-recording.recording,
 #bluetooth.on {
   color: @waybar-on_primary;
   background: @waybar-primary;
 }
 
 tooltip {
-  background: @waybar-bg;
+  background: @waybar-tooltip-bg;
   color: @waybar-on_bg;
   border-radius: 5px;
   padding: 4px 8px;

@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["battery", "backlight",  "custom/cpu-temp", "custom/gpu-temp", "wireplumber",],
   "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["custom/power-mode", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
+  "modules-right": ["custom/recording", "custom/power-mode", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
 
   "margin": "8px 16px -12px",
 
@@ -58,6 +58,14 @@
     "format-disabled": "󰂲",
     "format-on": "󰂯",
     "format-connected": "󰂱",
+  },
+
+ "custom/recording": {
+    "format": " {text}",
+    "exec": "~/.config/waybar/bin/recording.sh",
+    "return-type": "json",
+    "interval": 1,
+    "exec-if": "pgrep wl-screenrec",
   },
 
  "custom/cpu-temp": {
