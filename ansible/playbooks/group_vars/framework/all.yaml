@@ -165,6 +165,8 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/firefox/chrome/userChrome.css"
         dest: "{{ firefox.profile }}/chrome/userChrome.css"
+      - src: "{{ dotfiles_source_dir }}/firefox/chrome/userContent.css"
+        dest: "{{ firefox.profile }}/chrome/userContent.css"
       - src: "{{ dotfiles_source_dir }}/mozilla/native-messaging-hosts/pywalfox.json"
         dest: "{{ firefox.native_messaging_hosts }}/pywalfox.json"
   - name: terminal
