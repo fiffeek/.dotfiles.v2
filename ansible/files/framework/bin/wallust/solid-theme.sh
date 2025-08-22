@@ -5,13 +5,14 @@ set -e
 source $HOME/.bin/wallust-reload.sh
 
 THEME="${1:-"github"}"
+EXTRA_ARGS="${*:2}"
 
 function main {
   control-hyprpaper.sh stop || true
-  wallust cs "$THEME" --skip-sequences
+  wallust-wrapper.sh colorscheme "$THEME" $EXTRA_ARGS
   matugen color hex "$(cat ~/.config/matugen/generated-colors)"
   reload
-  notify-send "Theme changed" "$THEME"
+  notify_theme_changed "$THEME" "$EXTRA_ARGS"
 }
 
 (

@@ -39,3 +39,14 @@ function reload {
   reload_obsidian
   reload_tmux
 }
+
+function notify_theme_changed {
+  local target extra
+  target="$1"
+  extra="${2:-"default args"}"
+
+  notify-send \
+    --hint=string:synchronous:theme-changed \
+    --hint=string:x-dunst-stack-tag:theme-changed \
+    "Theme changed" "$target: $extra"
+}
