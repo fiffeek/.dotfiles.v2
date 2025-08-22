@@ -344,19 +344,10 @@ modules:
   - name: video
     tag: video
     packages:
-      - name: vlc
-        state: latest
-        source: pacman
-      - name: vlc-plugin-ffmpeg
-        state: latest
-        source: pacman
-      - name: vlc-plugin-pipewire
+      - name: vlc-git
         state: latest
         source: aur
         helper: paru
-      - name: vlc-gui-qt
-        state: latest
-        source: pacman
   - name: screenshot
     tag: ss
     packages:
