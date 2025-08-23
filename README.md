@@ -9,6 +9,8 @@ This allows for using a [custom DSL](https://github.com/fiffeek/.dotfiles.v2/blo
 to define the components, making each `module` (a bunch of ansible roles)
 responsible for a self-sufficient part of the system (e.g. hyprland).
 
+## Preview
+https://github.com/user-attachments/assets/7efd851c-4e5d-4a37-b5aa-f39a3d0741ad
 
 ## Hardware
 Some of the modules are tied specifically to the hardware the software runs on --
@@ -50,8 +52,11 @@ video playback ~6-8h.
 | light | 4-8W  | firefox browsing, tmux + nvim, 60hz vrr |
 | video | 7-10W | 720p 60fps ff video with hardware acc |
 
-## Related projects & credits
+## Sceenshots
+<img width="2880" height="2560" alt="ss_2025-08-23_00:30:34" src="https://github.com/user-attachments/assets/09361280-fae1-4737-ad5b-66cc23e7fdaa" />
+<img width="2880" height="2560" alt="ss_2025-08-23_00:27:01" src="https://github.com/user-attachments/assets/f8da4abf-86b3-458d-b030-ab9979aa52af" />
 
+## Related projects & credits
 * [lots of useful patterns and scripts from theprimeagen's dev](https://github.com/ThePrimeagen/dev)
 * [ansible dsl pattern from A's dotfiles](github.com/A/.dotfiles/tree/master)
 * [folke's dots for widgets](https://github.com/folke/dot/tree/master/config)
