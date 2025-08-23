@@ -1,0 +1,4 @@
+---
+- name: Ensure npm packages are managed {{ npm_packages | map(attribute='name') }}
+  ansible.builtin.include_tasks: package.yaml
+  with_items: "{{ npm_packages }}"

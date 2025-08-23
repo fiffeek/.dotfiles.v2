@@ -1,0 +1,2 @@
+---
+npm_path: /home/{{ ansible_user_id }}/.asdf/shims/npm

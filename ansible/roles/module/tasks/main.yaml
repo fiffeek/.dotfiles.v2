@@ -49,6 +49,11 @@
     name: pip
   vars:
     pip_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'pip') | list }}"
+- name: Manage npm packages
+  ansible.builtin.include_role:
+    name: npm
+  vars:
+    npm_packages: "{{ module.packages | default([]) | selectattr('source', 'equalto', 'npm') | list }}"
 - name: Manage git config
   ansible.builtin.include_role:
     name: git_config

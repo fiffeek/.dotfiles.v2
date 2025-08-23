@@ -637,3 +637,10 @@ modules:
         should_create: false
         notify:
           - mkinitcpio
+  - name: ai
+    tag: ai
+    packages:
+      - name: "@anthropic-ai/claude-code"
+        global: true
+        version: 1.0.89
+        source: npm

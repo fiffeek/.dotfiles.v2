@@ -1,0 +1,8 @@
+---
+- name: Install npm {{ item.name }}
+  community.general.npm:
+    name: "{{ item.name }}"
+    global: "{{ item.global | d(True) | bool }}"
+    version: "{{ item.version | d('') }}"
+    state: "{{ item.state | d('present') }}"
+    executable: "{{ item.npm_path | d(npm_path) }}"
