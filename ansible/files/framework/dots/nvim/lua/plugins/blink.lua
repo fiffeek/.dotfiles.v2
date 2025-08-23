@@ -19,7 +19,7 @@ return {
           name = "Buffer",
           module = "blink.cmp.sources.buffer",
           min_keyword_length = 2,
-          score_offset = 2,
+          score_offset = -1,
           opts = {
             -- default to all visible buffers
             get_bufnrs = function()
