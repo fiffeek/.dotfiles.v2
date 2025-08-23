@@ -55,4 +55,5 @@ provisioning: $(INSTALL_DIR)/.venv.stamp
 	. "$(VENV)/bin/activate"; cd "$(ANSIBLE_ROOT)" && $(MAKE) USER_FLAGS='$(EXTRA_ARGS)' $@
 
 clean:
-	r  -rf "$(VENV)" "$(INSTALL_DIR)"
+	rm  -rf "$(VENV)" "$(INSTALL_DIR)"
+	rm $(ASDF_BIN)

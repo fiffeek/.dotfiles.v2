@@ -20,6 +20,7 @@ Two major things for the battery life enhancements were:
 * putting in the [120hz screen with VRR](https://universal-blue.discourse.group/t/vrr-on-framework-with-2-8k-screens/4677)
 
 ## Repo usage
+You likely want to use the dots are reference, but here's how the project can be run:
 
 ```bash
 # install asdf to pull python (pyenv) & setup venv
@@ -39,6 +40,10 @@ the former being good at terminal coloring while the latter is much better
 for UI elements, see [wallust templates](https://github.com/fiffeek/.dotfiles.v2/tree/main/ansible/files/framework/dots/wallust/templates)
 and [matugen](https://github.com/fiffeek/.dotfiles.v2/tree/main/ansible/files/framework/dots/matugen/templates).
 
+Most eye-candy effects are disabled when on battery by default; there are also static
+colorschemes in [wallust](https://github.com/fiffeek/.dotfiles.v2/tree/main/ansible/files/framework/dots/wallust/colorschemes)
+that allow for fewer distractions (there is no wallpaper and the colors are purposedly muted; see screenshots).
+
 ## Performance and power usage
 
 ### Power draw
@@ -53,6 +58,7 @@ video playback ~6-8h.
 | video | 7-10W | 720p 60fps ff video with hardware acc |
 
 ## Sceenshots
+<img width="2880" height="2560" alt="ss_2025-08-23_04:50:27" src="https://github.com/user-attachments/assets/b8af0fc2-16c0-43af-8444-088ea9f43a31" />
 <img width="2880" height="2560" alt="ss_2025-08-23_00:30:34" src="https://github.com/user-attachments/assets/09361280-fae1-4737-ad5b-66cc23e7fdaa" />
 <img width="2880" height="2560" alt="ss_2025-08-23_00:27:01" src="https://github.com/user-attachments/assets/f8da4abf-86b3-458d-b030-ab9979aa52af" />
 
