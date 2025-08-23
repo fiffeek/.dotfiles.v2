@@ -6,18 +6,30 @@ source $HOME/.bin/wallust-reload.sh
 
 WALLPAPER="$1"
 WALLUST_OPTIONS_CACHE="$XDG_CACHE_HOME/wallust/options/last_applied"
-EXTRA_ARGS="${*:2}"
+MATUGEN_OPTIONS_CACHE="$XDG_CACHE_HOME/matugen/options/last_applied"
+EXTRA_WALLUST_ARGS="${2}"
+EXTRA_MATUGEN_ARGS="${3}"
+
+function send_notification {
+  WALLUST_EXTRA_ARGS="default"
+  if [ -f "$WALLUST_OPTIONS_CACHE" ]; then
+    WALLUST_EXTRA_ARGS="$(tail -n 1 "$WALLUST_OPTIONS_CACHE")"
+  fi
+  MATUGEN_EXTRA_ARGS="default"
+  if [ -f "$MATUGEN_OPTIONS_CACHE" ]; then
+    MATUGEN_EXTRA_ARGS="$(tail -n 1 "$MATUGEN_OPTIONS_CACHE")"
+  fi
+  notify_theme_changed "$WALLPAPER" \
+    " wallust: $WALLUST_EXTRA_ARGS\n matugen: $MATUGEN_EXTRA_ARGS"
+}
 
 function main {
   control-hyprpaper.sh start || true
   hyprctl hyprpaper reload ",$WALLPAPER"
-  wallust-wrapper.sh run "$WALLPAPER" $EXTRA_ARGS
-  matugen image "$WALLPAPER"
+  wallust-wrapper.sh run "$WALLPAPER" $EXTRA_WALLUST_ARGS
+  matugen-wrapper.sh image "$WALLPAPER" $EXTRA_MATUGEN_ARGS
   reload
-  if [ -f "$WALLUST_OPTIONS_CACHE" ]; then
-    EXTRA_ARGS="$(tail -n 1 "$WALLUST_OPTIONS_CACHE")"
-  fi
-  notify_theme_changed "$WALLPAPER" "$EXTRA_ARGS"
+  send_notification
 }
 
 (

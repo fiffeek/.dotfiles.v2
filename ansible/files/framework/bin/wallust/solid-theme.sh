@@ -5,14 +5,30 @@ set -e
 source $HOME/.bin/wallust-reload.sh
 
 THEME="${1:-"github"}"
-EXTRA_ARGS="${*:2}"
+WALLUST_OPTIONS_CACHE="$XDG_CACHE_HOME/wallust/options/last_applied"
+MATUGEN_OPTIONS_CACHE="$XDG_CACHE_HOME/matugen/options/last_applied"
+EXTRA_WALLUST_ARGS="${2}"
+EXTRA_MATUGEN_ARGS="${3}"
+
+function send_notification {
+  WALLUST_EXTRA_ARGS="default"
+  if [ -f "$WALLUST_OPTIONS_CACHE" ]; then
+    WALLUST_EXTRA_ARGS="$(tail -n 1 "$WALLUST_OPTIONS_CACHE")"
+  fi
+  MATUGEN_EXTRA_ARGS="default"
+  if [ -f "$MATUGEN_OPTIONS_CACHE" ]; then
+    MATUGEN_EXTRA_ARGS="$(tail -n 1 "$MATUGEN_OPTIONS_CACHE")"
+  fi
+  notify_theme_changed "$THEME" \
+    " wallust: $WALLUST_EXTRA_ARGS\n matugen: $MATUGEN_EXTRA_ARGS"
+}
 
 function main {
   control-hyprpaper.sh stop || true
-  wallust-wrapper.sh colorscheme "$THEME" $EXTRA_ARGS
-  matugen color hex "$(cat ~/.config/matugen/generated-colors)"
+  wallust-wrapper.sh colorscheme "$THEME" $EXTRA_WALLUST_ARGS
+  matugen-wrapper.sh hex "$(cat ~/.config/matugen/generated-colors)" $EXTRA_MATUGEN_ARGS
   reload
-  notify_theme_changed "$THEME" "$EXTRA_ARGS"
+  send_notification
 }
 
 (

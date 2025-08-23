@@ -47,5 +47,5 @@ function notify_theme_changed {
   notify-send \
     --hint=string:synchronous:theme-changed \
     --hint=string:x-dunst-stack-tag:theme-changed \
-    "Theme changed" "$target: $extra"
+    "Theme changed" "$target\n$extra"
 }

@@ -132,6 +132,8 @@ modules:
         dest: "{{ binaries_home }}/random-theme.sh"
       - src: "{{ bin_source_dir }}/wallust/wallust-wrapper.sh"
         dest: "{{ binaries_home }}/wallust-wrapper.sh"
+      - src: "{{ bin_source_dir }}/wallust/matugen-wrapper.sh"
+        dest: "{{ binaries_home }}/matugen-wrapper.sh"
       - src: "{{ bin_source_dir }}/wallust/adjust-current-theme.sh"
         dest: "{{ binaries_home }}/wallust-adjust-current-theme.sh"
       - src: "{{ dotfiles_source_dir }}/matugen"
