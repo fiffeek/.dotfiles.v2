@@ -187,6 +187,12 @@ modules:
         versions:
           - latest
         global: latest
+      - name: golangci-lint
+        source: asdf
+        repository: ""
+        versions:
+          - latest
+        global: latest
       - name: python
         source: asdf
         repository: ""
