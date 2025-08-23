@@ -8,12 +8,11 @@ function reload_tmux {
       tmux source-file ~/.config/tmux/tmux.conf \; refresh-client -S \; display-message 'tmux: config reloaded'
     fi
     # reload any zsh pane
-    tmux list-panes -s -a -F "#{session_name}:#{window_index}.#{pane_index} #{pane_current_command}" |
-      while read -r pane_process; do
-        IFS=' ' read -ra pane_process <<<"$pane_process"
-        if [[ "${pane_process[1]}" == "zsh" ]]; then
-          tmux send-keys -t "${pane_process[0]}" "source ~/.p10k.zsh; clear" C-m
-        fi
+    tmux list-panes -a -F '#{pane_id} #{pane_current_command} #{pane_in_mode}' |
+      while read -r pane_id cmd in_mode; do
+        # avoid panes in copy mode
+        [[ "$cmd" == zsh && "$in_mode" != 1 && "$pane_id" != "$TMUX_PANE" ]] &&
+          tmux send-keys -t "$pane_id" 'source ~/.p10k.zsh; clear' C-m
       done
   fi
 }
