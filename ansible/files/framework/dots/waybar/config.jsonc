@@ -9,6 +9,7 @@
 
   "hyprland/workspaces": {
     "format": "{name}",
+    "show-special": true,
     "persistent-workspaces": {
       "DP-10":[2,3,4,5,6]
     },
