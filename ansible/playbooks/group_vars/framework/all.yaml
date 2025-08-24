@@ -644,3 +644,7 @@ modules:
         global: true
         version: 1.0.89
         source: npm
+      - name: "@openai/codex"
+        global: true
+        version: 0.23.0
+        source: npm
