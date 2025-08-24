@@ -1,0 +1,21 @@
+---
+session_name: hyprdynamicmonitors
+windows:
+  - focus: 'true'
+    layout: 24c4,200x69,0,0[200x34,0,0,12,200x34,0,35,11]
+    options: {}
+    start_directory: /home/fmikina/personal/hyprdynamicmonitors
+    window_name: project
+    shell_command_before:
+      - source venv/bin/activate
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - shell_command: make install
+  - layout: d2a4,200x69,0,0,7
+    options: {}
+    panes:
+      - focus: 'true'
+        shell_command: claude
+    start_directory: /home/fmikina/personal/hyprdynamicmonitors
+    window_name: claude
