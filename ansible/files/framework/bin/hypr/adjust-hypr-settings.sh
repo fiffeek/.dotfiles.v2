@@ -28,8 +28,6 @@ done
 
 POWER_STATUS=$(cat /sys/class/power_supply/ACAD/online)
 
-adjust-refresh-rate.sh
-
 if [ "$POWER_STATUS" -eq 1 ]; then
   control-hyprpaper.sh start || true
   adjust_settings "true" "AC"

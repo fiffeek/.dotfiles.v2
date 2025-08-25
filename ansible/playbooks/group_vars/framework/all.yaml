@@ -306,6 +306,8 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/hypr"
         dest: "{{ configs_home }}/hypr"
+      - src: "{{ dotfiles_source_dir }}/hyprdynamicmonitors"
+        dest: "{{ configs_home }}/hyprdynamicmonitors"
       - src: "{{ dotfiles_source_dir }}/gtk-4.0"
         dest: "{{ configs_home }}/gtk-4.0"
       - src: "{{ dotfiles_source_dir }}/gtk-3.0"
@@ -344,6 +346,16 @@ modules:
         start:
           limit_burst: 10
           limit_interval_sec: 300
+      - name: hyprdynamicmonitors
+        description: Rum hyprdynamicmonitors daemon
+        exec_start: "{{ binaries_home }}/hyprdynamicmonitors --debug"
+        type: simple
+        restart:
+          mode: on-failure
+          sec: 5
+        start:
+          limit_burst: 60
+          limit_interval_sec: 5
       - name: waybar-top
         description: Run waybar top bar
         exec_start: "{{ binaries_home }}/waybar_start.sh"
