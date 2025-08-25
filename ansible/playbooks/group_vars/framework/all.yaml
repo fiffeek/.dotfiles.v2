@@ -195,6 +195,12 @@ modules:
         versions:
           - latest
         global: latest
+      - name: goreleaser
+        source: asdf
+        repository: "https://github.com/kforsthoevel/asdf-goreleaser.git"
+        versions:
+          - latest
+        global: latest
       - name: python
         source: asdf
         repository: ""
@@ -210,6 +216,14 @@ modules:
       - name: rustup
         state: latest
         source: pacman
+      - name: "@anthropic-ai/claude-code"
+        global: true
+        version: 1.0.89
+        source: npm
+      - name: "@openai/codex"
+        global: true
+        version: 0.23.0
+        source: npm
   - name: hyprland
     tag: h
     packages:
@@ -637,14 +651,3 @@ modules:
         should_create: false
         notify:
           - mkinitcpio
-  - name: ai
-    tag: ai
-    packages:
-      - name: "@anthropic-ai/claude-code"
-        global: true
-        version: 1.0.89
-        source: npm
-      - name: "@openai/codex"
-        global: true
-        version: 0.23.0
-        source: npm
