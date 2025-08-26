@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -o pipefail
+set -eux
+
 WALLUST_LOCK=/tmp/wallust-wallpaper.lock
 
 function reload_tmux {
@@ -36,7 +39,7 @@ function reload {
   hyprctl reload
   pywalfox update
   reload_obsidian
-  reload_tmux
+  reload_tmux || true
 }
 
 function notify_theme_changed {
