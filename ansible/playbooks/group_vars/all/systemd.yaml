@@ -1,0 +1,8 @@
+---
+systemd:
+  targets:
+    graphical_session: graphical-session.target
+    dbus_socket: dbus.socket
+    graphical_session_pre: graphical-session-pre.target
+    upower: upower.service
+    hyprland_custom_session: hyprland-custom-session.target

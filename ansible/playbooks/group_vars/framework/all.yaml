@@ -151,13 +151,17 @@ modules:
       - name: hyprpaper
         description: Run hyprpaper daemon for IPC wallpaper handling
         exec_start: hyprpaper
-        type: simple
+        type: exec
         restart:
           mode: on-failure
           sec: 5
         start:
           limit_burst: 10
           limit_interval_sec: 5
+        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
+        part_of: "{{ systemd.targets.hyprland_custom_session }}"
+        after:
+          - "{{ systemd.targets.hyprland_custom_session }}"
   - name: browsers
     tag: b
     packages:
@@ -197,7 +201,7 @@ modules:
         global: latest
       - name: goreleaser
         source: asdf
-        repository: "https://github.com/kforsthoevel/asdf-goreleaser.git"
+        repository: https://github.com/kforsthoevel/asdf-goreleaser.git
         versions:
           - latest
         global: latest
@@ -222,7 +226,7 @@ modules:
         source: npm
       - name: "@openai/codex"
         global: true
-        version: 0.23.0
+        version: "0.23.0"
         source: npm
   - name: hyprland
     tag: h
@@ -337,6 +341,15 @@ modules:
       - src: "{{ bin_source_dir }}/rofi/theme-selector.sh"
         dest: "{{ binaries_home }}/theme-selector.sh"
     custom_systemd_services:
+      - name: "{{ systemd.targets.hyprland_custom_session }}"
+        description: A target for other services when hyprland becomes ready
+        empty_install: true
+        empty_service: true
+        after:
+          - "{{ systemd.targets.graphical_session_pre }}"
+        binds_to: "{{ systemd.targets.graphical_session }}"
+        wants:
+          - "{{ systemd.targets.graphical_session_pre }}"
       - name: hypr-settings-on-boot
         description: Change hypr settings on system boot after hypr loads
         exec_start: "{{ binaries_home }}/adjust-hypr-settings.sh"
@@ -346,26 +359,41 @@ modules:
         start:
           limit_burst: 10
           limit_interval_sec: 300
+        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
+        part_of: "{{ systemd.targets.hyprland_custom_session }}"
+        after:
+          - "{{ systemd.targets.hyprland_custom_session }}"
       - name: hyprdynamicmonitors
-        description: Rum hyprdynamicmonitors daemon
+        description: Run hyprdynamicmonitors daemon
         exec_start: "{{ binaries_home }}/hyprdynamicmonitors --debug"
-        type: simple
+        type: exec
         restart:
           mode: on-failure
           sec: 5
         start:
           limit_burst: 60
           limit_interval_sec: 5
+        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
+        part_of: "{{ systemd.targets.hyprland_custom_session }}"
+        after:
+          - "{{ systemd.targets.hyprland_custom_session }}"
+          - "{{ systemd.targets.dbus_socket }}"
+        requires:
+          - "{{ systemd.targets.dbus_socket }}"
       - name: waybar-top
         description: Run waybar top bar
         exec_start: "{{ binaries_home }}/waybar_start.sh"
-        type: simple
+        type: exec
         restart:
           mode: on-failure
           sec: 5
         start:
           limit_burst: 10
           limit_interval_sec: 5
+        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
+        part_of: "{{ systemd.targets.hyprland_custom_session }}"
+        after:
+          - "{{ systemd.targets.hyprland_custom_session }}"
   - name: info
     tag: info
     packages:

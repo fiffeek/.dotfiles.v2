@@ -1,9 +1,11 @@
 CHECK_FLAGS := --check --diff
 USER_FLAGS ?=
 ADDITIONAL_FLAGS ?= $(USER_FLAGS)
+ANSIBLE_EXTRA_ENV ?=
 
 ifeq ($(MODE),debug)
-	override ADDITIONAL_FLAGS := $(USER_FLAGS) $(CHECK_FLAGS) -vvvv
+	override ADDITIONAL_FLAGS := $(USER_FLAGS) $(CHECK_FLAGS) -vv
+	override ANSIBLE_EXTRA_ENV := ANSIBLE_DISPLAY_OK_HOSTS=no ANSIBLE_DISPLAY_SKIPPED_HOSTS=no
 endif
 
 ANSIBLE_BASE := ansible-playbook
@@ -15,6 +17,6 @@ install: $(ANSIBLE_GALAXY_REQUIREMENTS)
 		-r $(ANSIBLE_GALAXY_REQUIREMENTS)
 
 provisioning: install
-	$(ANSIBLE_BASE) playbooks/provisioning.yaml \
+	$(ANSIBLE_EXTRA_ENV) $(ANSIBLE_BASE) playbooks/provisioning.yaml \
 		--ask-become-pass \
 		$(ADDITIONAL_FLAGS)

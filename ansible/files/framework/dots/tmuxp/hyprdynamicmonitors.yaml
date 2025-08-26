@@ -1,7 +1,7 @@
 ---
 session_name: hyprdynamicmonitors
 windows:
-  - focus: 'true'
+  - focus: "true"
     layout: 24c4,200x69,0,0[200x34,0,0,12,200x34,0,35,11]
     options: {}
     start_directory: /home/fmikina/personal/hyprdynamicmonitors
@@ -15,7 +15,7 @@ windows:
   - layout: d2a4,200x69,0,0,7
     options: {}
     panes:
-      - focus: 'true'
+      - focus: "true"
         shell_command: claude
     start_directory: /home/fmikina/personal/hyprdynamicmonitors
     window_name: claude
