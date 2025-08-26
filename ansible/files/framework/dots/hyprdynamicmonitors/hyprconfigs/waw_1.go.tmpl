@@ -16,4 +16,9 @@ workspace = 2,monitor:{{$external.Name}}
 workspace = 3,monitor:{{$external.Name}}
 workspace = 4,monitor:{{$external.Name}}
 workspace = 5,monitor:{{$external.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 2 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 3 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 4 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 5 {{$external.Name}}
 {{ end }}
