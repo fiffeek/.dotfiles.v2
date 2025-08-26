@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+set -o pipefail
+set -eux
 
 POWER_STATUS=$(cat /sys/class/power_supply/ACAD/online)
 

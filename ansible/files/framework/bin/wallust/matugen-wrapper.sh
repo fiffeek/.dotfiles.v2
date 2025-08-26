@@ -1,8 +1,9 @@
 #!/bin/bash
 
-set -e
+set -o pipefail
+set -eux
 
-TARGET="$2"
+TARGET="${2:-""}"
 EXTRA_ARGS="${*:3}"
 CACHE_DIR="$XDG_CACHE_HOME"/matugen/options
 CACHE_FILE="$CACHE_DIR"/"$(cksum <<<"$TARGET" | cut -f 1 -d ' ')"

@@ -1,14 +1,15 @@
 #!/bin/bash
 
-set -e
+set -o pipefail
+set -eux
 
 source $HOME/.bin/wallust-reload.sh
 
 THEME="${1:-"github"}"
 WALLUST_OPTIONS_CACHE="$XDG_CACHE_HOME/wallust/options/last_applied"
 MATUGEN_OPTIONS_CACHE="$XDG_CACHE_HOME/matugen/options/last_applied"
-EXTRA_WALLUST_ARGS="${2}"
-EXTRA_MATUGEN_ARGS="${3}"
+EXTRA_WALLUST_ARGS="${2:-""}"
+EXTRA_MATUGEN_ARGS="${3:-""}"
 
 function send_notification {
   WALLUST_EXTRA_ARGS="default"

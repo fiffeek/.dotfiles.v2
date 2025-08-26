@@ -11,7 +11,7 @@ function reload_tmux {
     tmux list-panes -a -F '#{pane_id} #{pane_current_command} #{pane_in_mode}' |
       while read -r pane_id cmd in_mode; do
         # avoid panes in copy mode
-        [[ "$cmd" == zsh && "$in_mode" != 1 && "$pane_id" != "$TMUX_PANE" ]] &&
+        [[ "$cmd" == zsh && "$in_mode" != 1 && "$pane_id" != "${TMUX_PANE:-""}" ]] &&
           tmux send-keys -t "$pane_id" 'source ~/.p10k.zsh; clear' C-m
       done
   fi
