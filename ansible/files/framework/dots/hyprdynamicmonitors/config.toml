@@ -20,3 +20,15 @@ monitor_tag = "laptop"
 [[profiles.waw_1.conditions.required_monitors]]
 description = "LG Electronics LG SDQHD 301NTBKDU037"
 monitor_tag = "external"
+
+[profiles.waw_2]
+config_file = "hyprconfigs/waw_2.go.tmpl"
+config_file_type = "template"
+
+[[profiles.waw_2.conditions.required_monitors]]
+description = "BOE NE135A1M-NY1"
+monitor_tag = "laptop"
+
+[[profiles.waw_2.conditions.required_monitors]]
+description = "Technical Concepts Ltd Beyond TV 0x00010000"
+monitor_tag = "external"
