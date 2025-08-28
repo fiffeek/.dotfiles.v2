@@ -14,12 +14,16 @@ return {
   opts = {
     sources = {
       providers = {
-        lsp = { fallbacks = {} },
+        lsp = { fallbacks = {}, score_offset = 10 },
+        snippets = {
+          module = "blink.cmp.sources.snippets",
+          score_offset = -1,
+        },
         buffer = {
           name = "Buffer",
           module = "blink.cmp.sources.buffer",
           min_keyword_length = 2,
-          score_offset = -1,
+          score_offset = -3,
           opts = {
             -- default to all visible buffers
             get_bufnrs = function()
