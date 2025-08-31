@@ -32,3 +32,7 @@ monitor_tag = "laptop"
 [[profiles.waw_2.conditions.required_monitors]]
 description = "Technical Concepts Ltd Beyond TV 0x00010000"
 monitor_tag = "external"
+
+[fallback_profile]
+config_file = "hyprconfigs/fallback.conf"
+config_file_type = "static"
