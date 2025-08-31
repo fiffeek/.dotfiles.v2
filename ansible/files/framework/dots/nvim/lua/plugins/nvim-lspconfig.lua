@@ -2,6 +2,11 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      gopls = {
+        settings = {
+          directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-venv" },
+        },
+      },
       jinja_lsp = {
         filetypes = { "jinja" },
         root_markers = { ".git" },
