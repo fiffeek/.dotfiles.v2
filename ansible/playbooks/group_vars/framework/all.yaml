@@ -321,10 +321,6 @@ modules:
       - name: xdg-desktop-portal-hyprland
         state: latest
         source: pacman
-    udev:
-      - rule: >-
-          SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ACTION=="change", RUN+="/usr/bin/systemd-run --machine={{ ansible_user_id
-          }}@.host --user /home/{{ ansible_user_id }}/.bin/adjust-hypr-settings.sh"
     users:
       - name: "{{ ansible_user_id }}"
         groups: video,input
@@ -371,19 +367,6 @@ modules:
         binds_to: "{{ systemd.targets.graphical_session }}"
         wants:
           - "{{ systemd.targets.graphical_session_pre }}"
-      - name: hypr-settings-on-boot
-        description: Change hypr settings on system boot after hypr loads
-        exec_start: "{{ binaries_home }}/adjust-hypr-settings.sh"
-        restart:
-          mode: on-failure
-          sec: 30
-        start:
-          limit_burst: 10
-          limit_interval_sec: 300
-        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
-        part_of: "{{ systemd.targets.hyprland_custom_session }}"
-        after:
-          - "{{ systemd.targets.hyprland_custom_session }}"
       - name: hyprdynamicmonitors
         description: Run hyprdynamicmonitors daemon
         exec_start: "{{ binaries_home }}/hyprdynamicmonitors --debug"
