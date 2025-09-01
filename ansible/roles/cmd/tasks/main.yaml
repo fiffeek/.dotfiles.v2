@@ -1,0 +1,4 @@
+---
+- name: Ensure aur packages are managed {{ cmd_execs | map(attribute='name') }}
+  ansible.builtin.include_tasks: exec.yaml
+  with_items: "{{ cmd_execs }}"

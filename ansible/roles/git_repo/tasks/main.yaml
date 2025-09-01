@@ -1,8 +1,4 @@
 ---
-- name: Ensure repos are checked out
-  ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "{{ item.dest }}"
-    version: "{{ item.version | default('master') }}"
-    update: "{{ item.update | default(false) | bool }}"
+- name: Ensure repos are managed {{ git_repo_items | map(attribute='repo') }}
+  ansible.builtin.include_tasks: repo.yaml
   with_items: "{{ git_repo_items }}"

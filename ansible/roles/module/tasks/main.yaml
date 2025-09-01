@@ -69,6 +69,11 @@
     name: links
   vars:
     links_items: "{{ module.links | default([]) }}"
+- name: Manage commands
+  ansible.builtin.include_role:
+    name: cmd
+  vars:
+    cmd_execs: "{{ module.commands | default([]) }}"
 - name: Manage custom systemd services
   ansible.builtin.include_role:
     name: custom_systemd

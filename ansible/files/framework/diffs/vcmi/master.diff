@@ -1,0 +1,46 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index a36dbda..484589d 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -9,11 +9,11 @@ pkgdesc="Open-source engine for Heroes of Might and Magic III"
+ arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+ url="https://github.com/vcmi/vcmi"
+ license=(
+-	'GPL-2.0-or-later' # program
+-	'CC-BY-SA-4.0' # assets
++  'GPL-2.0-or-later' # program
++  'CC-BY-SA-4.0'     # assets
+ )
+ depends=('boost-libs' 'ffmpeg' 'sdl2_image' 'sdl2_mixer' 'sdl2_ttf' 'qt6-base' 'libxkbcommon-x11'
+-         'hicolor-icon-theme' 'onetbb' 'fuzzylite' 'luajit')
++  'hicolor-icon-theme' 'onetbb' 'luajit')
+ makedepends=('boost' 'cmake' 'git' 'qt6-tools' 'minizip' 'ninja')
+ optdepends=('innoextract: required by vcmibuilder' 'unshield: required by vcmibuilder' 'unzip: required by vcmibuilder')
+ install="${pkgname}.install"
+@@ -31,15 +31,17 @@ prepare() {
+
+ build() {
+   local _cmake_options=(
+-  	-B build
+-  	-S "$_pkgsrc"
+-  	-G Ninja
+-  	-DCMAKE_INSTALL_PREFIX='/usr'
+-  	-DENABLE_TEST=OFF
+-  	-DFORCE_BUNDLED_FL=OFF
+-  	-DENABLE_INNOEXTRACT=OFF
+-  	-DCMAKE_BUILD_TYPE='Release'
+-  	-Wno-dev
++    -B build
++    -S "$_pkgsrc"
++    -G Ninja
++    -DCMAKE_INSTALL_PREFIX='/usr'
++    -DENABLE_TEST=OFF
++    -DFORCE_BUNDLED_FL=OFF
++    -DENABLE_INNOEXTRACT=OFF
++    -DCMAKE_BUILD_TYPE='Release'
++    -DCMAKE_CXX_COMPILER='clang++'
++    -DCMAKE_C_COMPILER='clang'
++    -Wno-dev
+   )
+
+   cmake "${_cmake_options[@]}"

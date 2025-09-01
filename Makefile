@@ -10,9 +10,9 @@ HOME_BIN := ~/.bin
 ANSIBLE_ROOT := ansible
 
 ONLY_MODULE ?=
-EXTRA_ARGS ?=
+EXTRA_FLAGS ?=
 ifdef ONLY_MODULE
-EXTRA_ARGS := --extra-vars "only_module=$(ONLY_MODULE)"
+EXTRA_ARGS = --extra-vars "only_module=$(ONLY_MODULE)" $(EXTRA_FLAGS)
 endif
 
 install: $(INSTALL_DIR)/.dir.stamp $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp

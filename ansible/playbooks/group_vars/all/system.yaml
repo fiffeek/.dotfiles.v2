@@ -13,3 +13,4 @@ repos:
   personal_home: "{{ lookup('env', 'HOME') }}/personal"
   external_home: "{{ lookup('env', 'HOME') }}/repos"
   work_home: "{{ lookup('env', 'HOME') }}/work"
+  diffs_source: "{{ playbook_dir }}/../files/framework/diffs/"

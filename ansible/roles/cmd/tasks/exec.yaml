@@ -1,0 +1,7 @@
+---
+- name: Run {{ item.name }}
+  ansible.builtin.command:
+    cmd: "{{ item.cmd }}"
+  become: "{{ item.become | d(False) | bool }}"
+  become_user: "{{ ansible_user_id }}"
+  changed_when: true

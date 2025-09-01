@@ -82,6 +82,9 @@ modules:
     links:
       - src: "{{ dotfiles_source_dir }}/btop/btop.conf"
         dest: "{{ configs_home }}/btop/btop.conf"
+    commands:
+      - name: Disable headset auto switch
+        cmd: wpctl settings --save bluetooth.autoswitch-to-headset-profile false
   - name: fonts
     tag: f
     packages:
@@ -228,6 +231,24 @@ modules:
         global: true
         version: "0.23.0"
         source: npm
+      - name: python-build
+        source: pacman
+        state: latest
+      - name: python-installer
+        source: pacman
+        state: latest
+      - name: python-wheel
+        source: pacman
+        state: latest
+      - name: build
+        source: pip
+        version: 1.3.0
+      - name: installer
+        source: pip
+        version: "0.7.0"
+      - name: wheel
+        source: pip
+        version: "0.45.1"
   - name: hyprland
     tag: h
     packages:
@@ -691,3 +712,50 @@ modules:
         should_create: false
         notify:
           - mkinitcpio
+  - name: gaming
+    tag: game
+    packages:
+      - name: mesa-demos
+        state: latest
+        source: pacman
+      - name: vulkan-tools
+        state: latest
+        source: pacman
+      - name: gamescope
+        state: latest
+        source: pacman
+      - name: vulkan-radeon
+        state: latest
+        source: pacman
+      - name: amdvlk
+        state: absent
+        source: pacman
+      - name: lib32-amdvlk
+        state: absent
+        source: pacman
+      - name: lib32-vulkan-radeon
+        state: latest
+        source: pacman
+      - name: ttf-liberation
+        state: latest
+        source: pacman
+      - name: lib32-amdgpu-pro-oglp
+        state: latest
+        source: aur
+        helper: paru
+      - name: steam
+        state: latest
+        source: pacman
+      - name: protonup-qt-bin
+        state: latest
+        source: aur
+        helper: paru
+      - name: innoextract
+        state: latest
+        source: pacman
+    git_repos:
+      - repo: https://aur.archlinux.org/vcmi.git
+        dest: "{{ repos.external_home }}/vcmi"
+        version: master
+        diff: "{{ repos.diffs_source }}/vcmi/master.diff"
+        makepkg: true

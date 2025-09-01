@@ -1,0 +1,25 @@
+---
+- name: Ensure repos are checked out
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ item.dest }}"
+    version: "{{ item.version | default('master') }}"
+    update: "{{ item.update | default(false) | bool }}"
+  register: git_result
+- name: Apply a git diff patch from file
+  ansible.posix.patch:
+    src: "{{ item.diff }}"
+    basedir: "{{ item.dest }}"
+    strip: 1
+  when:
+    - item.diff is defined
+    - git_result.changed
+  register: patch_result
+- name: Run makepkg in repos that changed or were patched
+  ansible.builtin.command:
+    cmd: makepkg -si --needed --noconfirm
+    chdir: "{{ item.dest }}"
+  changed_when: true
+  when:
+    - patch_result.changed
+    - item.makepkg is defined
