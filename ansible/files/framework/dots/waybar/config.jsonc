@@ -114,7 +114,7 @@
     "exec": "~/.config/waybar/bin/vpn_status.sh wg0-mullvad",
     "return-type": "json",
     "interval": 60,
-    "format": "󰖂",
+    "format": "󰤧",
   },
 
   "custom/power-mode": {
