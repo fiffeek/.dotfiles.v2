@@ -1,8 +1,9 @@
-/*Fonts*/
-:root {
-  --default-font: '"Iosevka Nerd Font", monospace, "Inter", sans-serif';
-  --font-monospace: '"Iosevka Nerd Font", monospace, "Source Code Pro", monospace';
-}
+/*
+HyprLuna Obsidian Theme
+
+@author Nixev
+@version 1.0.0
+*/
 
 .theme-dark {
     /* Keep soft backgrounds */
@@ -117,7 +118,7 @@
 .theme-dark {
     --font-text-theme: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Ubuntu, sans-serif;
     --font-editor-theme: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Ubuntu, sans-serif;
-    --font-monospace-theme: 'Iosevka Nerd Font', 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace;
+    --font-monospace-theme: 'Jetbrains Mono', 'Fira Code', Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Headers */
@@ -234,133 +235,4 @@ a.tag {
 a.tag:hover {
     background-color: var(--tag-background-hover);
     text-decoration: none;
-}
-
-/* 1) Tabs (top) */
-.workspace-tab-header.is-active,
-.workspace-tab-header.is-active:hover {
-  background: var(--tab-background-focused-active);
-  color: var(--tab-text-color-focused-active);
-  border-bottom: 2px solid var(--interactive-accent);
-}
-.workspace-tab-header.is-active .workspace-tab-header-inner-title,
-.workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
-.workspace-tab-header.is-active .workspace-tab-header-status-icon {
-  color: var(--tab-text-color-focused-active);
-}
-
-/* Non-active tabs hover to match your palette */
-.workspace-tab-header:hover {
-  background: var(--tab-background-focused);
-  color: var(--tab-text-color-focused);
-}
-
-/* 2) Active leaf header (note title bar) */
-.workspace-leaf.mod-active .view-header {
-  background: var(--tab-background-focused);
-  border-bottom: 1px solid var(--background-modifier-border);
-}
-.workspace-leaf.mod-active .view-header-title,
-.workspace-leaf.mod-active .view-header-icon,
-.workspace-leaf.mod-active .view-header-breadcrumbs a {
-  color: var(--tab-text-color-focused-active);
-}
-.workspace-leaf.mod-active .view-action,
-.workspace-leaf.mod-active .view-header-icon:hover {
-  color: var(--interactive-accent);
-}
-
-/* 3) File explorer / sidebar – active & hover */
-.nav-file-title:hover,
-.nav-folder-title:hover,
-.tree-item-self:hover {
-  background: var(--nav-item-background-hover);
-  color: var(--nav-item-color);
-}
-
-.nav-file.is-active > .nav-file-title,
-.nav-file-title.is-active,
-.tree-item-self.is-active,
-.is-active > .tree-item-self,
-.nav-folder.is-active > .nav-folder-title {
-  background: var(--nav-item-background-active);
-  color: var(--nav-item-color);
-  border-left: 2px solid var(--interactive-accent);
-}
-
-/* Some builds use "is-selected" for the same state */
-.nav-file-title.is-selected,
-.nav-folder-title.is-selected,
-.is-selected > .tree-item-self {
-  background: var(--nav-item-background-active);
-  color: var(--nav-item-color);
-  border-left: 2px solid var(--interactive-accent);
-}
-
-/* 4) Search & quick switcher suggestions */
-.suggestion-item:hover,
-.suggestion-item.is-selected,
-.modal .vertical-tab-nav-item.is-active,
-.menu-item.is-active,
-.menu-item:hover {
-  background: var(--nav-item-background-active);
-  color: var(--nav-item-color);
-}
-
-/* 5) Breadcrumbs / active link accents inside headers */
-.view-header-breadcrumbs .breadcrumb:last-child a,
-.view-header-breadcrumbs .breadcrumb.is-active a {
-  color: var(--interactive-accent);
-}
-
-/* 6) Outline pane – active heading */
-.outline .tree-item-self.is-active,
-.outline .tree-item-self.is-selected {
-  background: var(--nav-item-background-active);
-  color: var(--nav-item-color);
-  border-left: 2px solid var(--interactive-accent);
-}
-
-/* 7) Editor active line & caret to harmonize with palette (optional) */
-.cm-activeLine {
-  background: var(--surface-variant, var(--background-secondary)) !important;
-}
-.cm-editor .cm-cursor {
-  border-left-color: var(--interactive-accent) !important;
-}
-
-/* --- Make heading variables drive colors (many themes read these) --- */
-.theme-dark {
-  --h1-color: var(--text-title-h1);
-  --h2-color: var(--text-title-h2);
-  --h3-color: var(--text-title-h3);
-  --h4-color: var(--text-title-h4);
-  --h5-color: var(--text-title-h5);
-  --h6-color: var(--text-title-h6);
-}
-
-/* --- Preview pane headings --- */
-.theme-dark .markdown-preview-view h1 { color: var(--text-title-h1) !important; font-weight: 600; }
-.theme-dark .markdown-preview-view h2 { color: var(--text-title-h2) !important; font-weight: 600; }
-.theme-dark .markdown-preview-view h3 { color: var(--text-title-h3) !important; font-weight: 500; }
-.theme-dark .markdown-preview-view h4 { color: var(--text-title-h4) !important; font-weight: 500; }
-.theme-dark .markdown-preview-view h5 { color: var(--text-title-h5) !important; font-weight: 500; }
-.theme-dark .markdown-preview-view h6 { color: var(--text-title-h6) !important; font-weight: 500; }
-
-/* --- Editor headings (CodeMirror 6) --- */
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-1 { color: var(--text-title-h1) !important; font-weight: 600; }
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-2 { color: var(--text-title-h2) !important; font-weight: 600; }
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-3 { color: var(--text-title-h3) !important; font-weight: 500; }
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-4 { color: var(--text-title-h4) !important; font-weight: 500; }
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-5 { color: var(--text-title-h5) !important; font-weight: 500; }
-.theme-dark .markdown-source-view.mod-cm6 .cm-header-6 { color: var(--text-title-h6) !important; font-weight: 500; }
-
-/* Optional: strengthen against theme typography wrappers */
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-1,
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-2,
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-3,
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-4,
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-5,
-.theme-dark .markdown-source-view.mod-cm6 .cm-line .cm-header-6 {
-  text-decoration: none;
 }
