@@ -1,7 +1,16 @@
 ---
+- name: Evaluate gate for {{ item.name }}
+  ansible.builtin.command: "{{ item.set_fact }}"
+  register: itemfact
+  changed_when: false
+  failed_when: false
+  when: item.set_fact is defined
 - name: Run {{ item.name }}
   ansible.builtin.command:
     cmd: "{{ item.cmd }}"
   become: "{{ item.become | d(False) | bool }}"
   become_user: "{{ ansible_user_id }}"
   changed_when: true
+  when: |
+    (item.set_fact is not defined) or
+    (item.set_fact is defined and item.when_not_stdout is defined and itemfact.stdout != item.when_not_stdout)

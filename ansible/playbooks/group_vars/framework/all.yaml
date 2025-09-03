@@ -749,3 +749,19 @@ modules:
         state: latest
         source: aur
         helper: paru
+  - name: vpn
+    tag: vpn
+    packages:
+      - name: mullvad-vpn-cli
+        state: latest
+        source: aur
+        helper: paru
+    commands:
+      - name: Allow for LAN access (split tunnel)
+        cmd: mullvad lan set allow
+        set_fact: mullvad lan get
+        when_not_stdout: "Local network sharing setting: allow"
+      - name: Disable auto connect
+        cmd: mullvad auto-connect set off
+        set_fact: mullvad auto-connect get
+        when_not_stdout: "Autoconnect: off"

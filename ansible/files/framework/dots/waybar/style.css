@@ -76,6 +76,7 @@ button:hover {
 #bluetooth,
 #wireplumber,
 #custom-homelab-vpn,
+#custom-mullvad-vpn,
 #custom-power-mode,
 #custom-recording,
 #network {
@@ -92,6 +93,7 @@ button:hover {
 #bluetooth,
 #wireplumber,
 #custom-homelab-vpn,
+#custom-mullvad-vpn,
 #custom-power-mode,
 #disk,
 #cpu,
@@ -115,6 +117,7 @@ button:hover {
 }
 
 #custom-homelab-vpn.deactivated,
+#custom-mullvad.deactivated,
 #bluetooth.disabled,
 #bluetooth.off {
   color: @waybar-on_bg;
@@ -125,6 +128,7 @@ button:hover {
 #wireplumber.zero,
 #wireplumber.source-muted,
 #custom-homelab-vpn.activated,
+#custom-mullvad-vpn.activated,
 #bluetooth.connected,
 #custom-recording.recording,
 #bluetooth.on {

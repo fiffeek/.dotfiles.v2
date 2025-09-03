@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["battery", "backlight",  "custom/cpu-temp", "custom/gpu-temp", "wireplumber",],
   "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["custom/recording", "custom/power-mode", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
+  "modules-right": ["custom/recording", "custom/power-mode", "custom/mullvad-vpn", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
 
   "margin": "8px 16px -12px",
 
@@ -108,6 +108,13 @@
     "return-type": "json",
     "interval": 60,
     "format": "󰣫",
+  },
+
+  "custom/mullvad-vpn": {
+    "exec": "~/.config/waybar/bin/vpn_status.sh wg0-mullvad",
+    "return-type": "json",
+    "interval": 60,
+    "format": "󰖂",
   },
 
   "custom/power-mode": {
