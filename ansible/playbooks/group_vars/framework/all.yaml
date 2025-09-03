@@ -85,6 +85,8 @@ modules:
     commands:
       - name: Disable headset auto switch
         cmd: wpctl settings --save bluetooth.autoswitch-to-headset-profile false
+        set_fact: wpctl settings bluetooth.autoswitch-to-headset-profile
+        when_not_stdout: "Value: false (Saved: false)"
   - name: fonts
     tag: f
     packages:
