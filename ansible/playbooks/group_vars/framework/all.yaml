@@ -141,6 +141,8 @@ modules:
         dest: "{{ binaries_home }}/matugen-wrapper.sh"
       - src: "{{ bin_source_dir }}/wallust/adjust-current-theme.sh"
         dest: "{{ binaries_home }}/wallust-adjust-current-theme.sh"
+      - src: "{{ bin_source_dir }}/wallust/calibre.sh"
+        dest: "{{ binaries_home }}/wallust-calibre.sh"
       - src: "{{ dotfiles_source_dir }}/matugen"
         dest: "{{ configs_home }}/matugen"
         # generate the theme stubs

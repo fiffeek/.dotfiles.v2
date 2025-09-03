@@ -39,6 +39,7 @@ function reload {
   hyprctl reload
   pywalfox update
   reload_obsidian
+  wallust-calibre.sh --theme ~/.config/calibre/matugen.calibre-palette
   reload_tmux || true
 }
 
