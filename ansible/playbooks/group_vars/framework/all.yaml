@@ -742,3 +742,10 @@ modules:
         version: master
         diff: "{{ repos.diffs_source }}/vcmi/master.diff"
         makepkg: true
+  - name: reading software
+    tag: read
+    packages:
+      - name: calibre-bin
+        state: latest
+        source: aur
+        helper: paru
