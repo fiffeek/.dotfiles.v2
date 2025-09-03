@@ -1,0 +1,8 @@
+@import "~/.config/rofi/themes/generated-colors-matugen.rasi"
+@import "~/.config/rofi/themes/default.rasi"
+
+entry {
+    placeholder:        "Calculator: try 5 + 5";
+    placeholder-color:  @on-surface-variant;
+    text-color:         @on-surface;
+}

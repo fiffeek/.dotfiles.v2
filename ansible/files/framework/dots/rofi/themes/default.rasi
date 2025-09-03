@@ -40,10 +40,10 @@ inputbar {
 
 prompt {
     text-color: @on-surface-variant;
+    enabled: false;
 }
 
 entry {
-    placeholder:        "Search";
     placeholder-color:  @on-surface-variant;
     text-color:         @on-surface;
 }
