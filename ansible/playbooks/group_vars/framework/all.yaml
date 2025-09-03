@@ -361,6 +361,14 @@ modules:
         dest: "{{ binaries_home }}/rofi-run.sh"
       - src: "{{ bin_source_dir }}/rofi/theme-selector.sh"
         dest: "{{ binaries_home }}/theme-selector.sh"
+      - src: "{{ bin_source_dir }}/rofi/calc.sh"
+        dest: "{{ binaries_home }}/rofi-calc.sh"
+      - src: "{{ bin_source_dir }}/rofi/websearch.sh"
+        dest: "{{ binaries_home }}/rofi-websearch.sh"
+      - src: "{{ bin_source_dir }}/rofi/github.sh"
+        dest: "{{ binaries_home }}/rofi-github.sh"
+      - src: "{{ bin_source_dir }}/hypr/focus-browser.sh"
+        dest: "{{ binaries_home }}/hypr-focus-browser.sh"
     custom_systemd_services:
       - name: "{{ systemd.targets.hyprland_custom_session }}"
         description: A target for other services when hyprland becomes ready

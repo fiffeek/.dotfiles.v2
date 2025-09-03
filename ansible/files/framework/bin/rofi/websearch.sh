@@ -20,5 +20,5 @@ selection="$(rofi -dmenu \
   -mesg "$MESSAGE")"
 
 if [ -n "$selection" ]; then
-  echo "$selection" | xargs -I{} xdg-open "$ENGINE" && hyprctl dispatch workspace 4
+  echo "$selection" | xargs -I{} xdg-open "$ENGINE" && hypr-focus-browser.sh
 fi
