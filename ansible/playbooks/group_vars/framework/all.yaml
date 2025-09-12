@@ -333,6 +333,8 @@ modules:
         dest: "{{ configs_home }}/hypr"
       - src: "{{ dotfiles_source_dir }}/hyprdynamicmonitors"
         dest: "{{ configs_home }}/hyprdynamicmonitors"
+      - src: "{{ dotfiles_source_dir }}/hyprwhenthen"
+        dest: "{{ configs_home }}/hyprwhenthen"
       - src: "{{ dotfiles_source_dir }}/gtk-4.0"
         dest: "{{ configs_home }}/gtk-4.0"
       - src: "{{ dotfiles_source_dir }}/gtk-3.0"
@@ -396,6 +398,20 @@ modules:
           - "{{ systemd.targets.dbus_socket }}"
         requires:
           - "{{ systemd.targets.dbus_socket }}"
+      - name: hyprwhenthen
+        description: Run hyprwhenthen daemon
+        exec_start: "{{ binaries_home }}/hyprwhenthen run"
+        type: exec
+        restart:
+          mode: on-failure
+          sec: 5
+        start:
+          limit_burst: 60
+          limit_interval_sec: 5
+        wanted_by: "{{ systemd.targets.hyprland_custom_session }}"
+        part_of: "{{ systemd.targets.hyprland_custom_session }}"
+        after:
+          - "{{ systemd.targets.hyprland_custom_session }}"
       - name: waybar-top
         description: Run waybar top bar
         exec_start: "{{ binaries_home }}/waybar_start.sh"

@@ -1,0 +1,7 @@
+[general]
+timeout = "2s"
+
+[[handler]]
+on = "windowtitlev2"
+when = "(.*),Logowanie – Konta Google — Mozilla Firefox"
+then = "~/.config/hyprwhenthen/scripts/float.sh $REGEX_GROUP_1"
