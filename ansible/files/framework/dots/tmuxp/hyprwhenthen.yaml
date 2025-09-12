@@ -1,10 +1,10 @@
 ---
-session_name: hyprdynamicmonitors
+session_name: hyprwhenthen
 windows:
   - focus: "true"
     layout: 24c4,200x69,0,0[200x34,0,0,12,200x34,0,35,11]
     options: {}
-    start_directory: /home/fmikina/personal/hyprdynamicmonitors
+    start_directory: /home/fmikina/personal/hyprwhenthen
     window_name: project
     shell_command_before:
       - source venv/bin/activate
@@ -17,5 +17,5 @@ windows:
     panes:
       - focus: "true"
         shell_command: claude
-    start_directory: /home/fmikina/personal/hyprdynamicmonitors
+    start_directory: /home/fmikina/personal/hyprwhenthen
     window_name: claude
