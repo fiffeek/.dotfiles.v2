@@ -1,6 +1,6 @@
 [general]
 # Start Satty in fullscreen mode
-fullscreen = true
+fullscreen = false
 # Exit directly after copy/save action
 early-exit = true
 # Draw corners of rectangles round if the value is greater than 0 (0 disables rounded corners)
