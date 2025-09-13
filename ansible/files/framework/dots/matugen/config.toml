@@ -56,10 +56,6 @@ output_path = '~/.config/gtk-3.0/generated-colors-matugen.css'
 input_path = "~/.config/matugen/templates/gtk.tpl"
 output_path = '~/.config/gtk-4.0/generated-colors-matugen.css'
 
-[templates.btop]
-input_path = "~/.config/matugen/templates/btop.tpl"
-output_path = "~/.config/btop/themes/matugen.theme"
-
 [templates.calibre]
 input_path = "~/.config/matugen/templates/calibre.tpl"
 output_path = "~/.config/calibre/matugen.calibre-palette"
