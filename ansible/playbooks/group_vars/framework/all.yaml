@@ -105,6 +105,9 @@ modules:
       - name: yazi
         state: latest
         source: pacman
+    links:
+      - src: "{{ dotfiles_source_dir }}/yazi/theme.toml"
+        dest: "{{ configs_home }}/yazi/theme.toml"
   - name: colors
     tag: cc
     packages:

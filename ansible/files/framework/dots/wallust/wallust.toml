@@ -21,3 +21,9 @@ vim.target = '~/.cache/wal/colors-wal.vim'
 
 btop.template = 'btop.tpl'
 btop.target = '~/.config/btop/themes/wallust.theme'
+
+yazi.template = 'yazi.tpl'
+yazi.target = '~/.config/yazi/flavors/wallust.yazi/flavor.toml'
+
+yazitmtheme.template = 'yazi.tmtheme.tpl'
+yazitmtheme.target = '~/.config/yazi/flavors/wallust.yazi/tmtheme.xml'
