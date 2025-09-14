@@ -1,0 +1,19 @@
+---
+session_name: filipmikina_com
+windows:
+  - layout: 253b,216x76,0,0[216x37,0,0,6,216x38,0,38,7]
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - focus: "false"
+        shell_command: make dev/run
+    start_directory: /home/fmikina/personal/filipmikina.com
+    window_name: project
+  - layout: cbe5,216x76,0,0,8
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: claude
+    start_directory: /home/fmikina/personal/filipmikina.com
+    window_name: claude
