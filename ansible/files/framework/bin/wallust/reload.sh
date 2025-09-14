@@ -36,7 +36,7 @@ function reload {
   systemctl --user restart waybar-top
   reload_gtk
   kill -SIGUSR1 "$(pidof kitty)"
-  pkill -SIGUSR2 btop
+  pkill -SIGUSR2 btop || true
   hyprctl reload
   pywalfox update
   reload_obsidian
