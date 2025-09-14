@@ -4,6 +4,7 @@ configs_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(configs_default_hom
 ansible_python_interpreter: "{{ playbook_dir }}/../../venv/bin/python"
 linux_source_dir: "{{ playbook_dir }}/../files/linux"
 binaries_home: "{{ lookup('env', 'HOME') }}/.bin"
+east_links: "{{ lookup('env', 'HOME') }}/.links"
 firefox:
   profile: "{{ lookup('env', 'HOME') }}/.mozilla/firefox/uya30cst.default"
   native_messaging_hosts: "{{ lookup('env', 'HOME') }}/.mozilla/native-messaging-hosts"

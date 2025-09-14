@@ -1,3 +1,5 @@
+@import url("file:///home/fmikina/.mozilla/firefox/uya30cst.default/chrome/vars.css");
+
 /******************** BEGIN PYWALFOX CUSTOM CSS ********************/
 /* Hide page scrollbars */
 html {
@@ -131,3 +133,79 @@ body {
 }
 
 /********************* END PYWALFOX CUSTOM CSS *********************/
+@-moz-document domain("search.home.filipmikina.com") {
+  html {
+    background-color: var(--matugen-background) !important;
+  }
+
+  #search_header {
+    background: var(--matugen-background) !important;
+  }
+
+  footer {
+    background-color: var(--matugen-background) !important;
+  }
+}
+
+@-moz-document domain("reddit.com") {
+
+  html,
+  body {
+    background-color: var(--matugen-background) !important;
+  }
+
+  header {
+    background-color: var(--matugen-background) !important;
+  }
+}
+
+@-moz-document domain("chatgpt.com") {
+
+  html,
+  body {
+    background-color: var(--matugen-background) !important;
+  }
+
+  header,
+  nav,
+  .sticky,
+  .dark\:bg-gray-900,
+  .dark\:bg-gray-800 {
+    background-color: var(--matugen-background) !important;
+  }
+}
+
+@-moz-document domain("claude.ai") {
+
+  html,
+  body {
+    background-color: var(--matugen-background) !important;
+  }
+
+  header,
+  nav,
+  .bg-white,
+  .bg-gray-100 {
+    background-color: var(--matugen-background) !important;
+  }
+}
+
+@-moz-document domain("youtube.com") {
+
+  html,
+  body {
+    background-color: var(--matugen-background) !important;
+  }
+
+  #masthead-container,
+  /* top bar */
+  ytd-masthead,
+  #container.ytd-masthead,
+  ytd-page-manager {
+    background-color: var(--matugen-background) !important;
+  }
+
+  #footer {
+    background-color: var(--matugen-background) !important;
+  }
+}
