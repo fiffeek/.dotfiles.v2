@@ -208,6 +208,12 @@ modules:
         versions:
           - latest
         global: latest
+      - name: typos
+        source: asdf
+        repository: https://github.com/aschiavon91/asdf-typos.git
+        versions:
+          - latest
+        global: latest
       - name: golangci-lint
         source: asdf
         repository: ""
