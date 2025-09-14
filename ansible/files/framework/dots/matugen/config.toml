@@ -28,6 +28,10 @@ output_path = '~/.config/mako/generated-colors-matugen.conf'
 input_path = './templates/firefox.tpl'
 output_path = '~/.cache/wal/colors.json'
 
+[templates.firefoxvars]
+input_path = './templates/firefoxvars.css.tpl'
+output_path = '~/.links/firefox_profile/chrome/vars.css'
+
 [templates.obsidian]
 input_path = './templates/obsidian.tpl'
 output_path = '~/.config/obsidian/snippets/matugen/theme.css'
