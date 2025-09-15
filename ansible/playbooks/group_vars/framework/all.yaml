@@ -208,6 +208,12 @@ modules:
         versions:
           - latest
         global: latest
+      - name: uv
+        source: asdf
+        repository: https://github.com/asdf-community/asdf-uv.git
+        versions:
+          - latest
+        global: latest
       - name: typos
         source: asdf
         repository: https://github.com/aschiavon91/asdf-typos.git
