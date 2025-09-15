@@ -1,0 +1,18 @@
+---
+session_name: vcmi-llm-map-generator
+windows:
+  - layout: a533,216x76,0,0[216x37,0,0,2,216x38,0,38,8]
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - make dev
+    start_directory: /home/fmikina/personal/vcmi-llm-map-generator
+    window_name: nvim
+  - layout: 6622,216x76,0,0,13
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: claude
+    start_directory: /home/fmikina/personal/vcmi-llm-map-generator
+    window_name: claude
