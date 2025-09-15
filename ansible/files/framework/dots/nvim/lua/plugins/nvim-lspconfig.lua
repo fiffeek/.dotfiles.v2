@@ -16,7 +16,15 @@ return {
           lang = "python",
         },
       },
-      pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              autoImportCompletions = true,
+            },
+          },
+        },
+      },
       ansiblels = {},
       marksman = {},
       cssls = {
