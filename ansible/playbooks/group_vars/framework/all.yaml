@@ -480,6 +480,12 @@ modules:
       - name: slurp
         state: latest
         source: pacman
+      - name: gnome-screenshot
+        state: latest
+        source: pacman
+      - name: scrot
+        state: latest
+        source: pacman
       - name: hyprshot-git
         state: latest
         source: aur
@@ -800,6 +806,45 @@ modules:
         state: latest
         source: aur
         helper: paru
+  - name: playing with x
+    tag: x
+    packages:
+      - name: tk
+        state: latest
+        source: pacman
+      - name: xorg-server-xvfb
+        state: latest
+        source: pacman
+      - name: x11vnc
+        state: latest
+        source: pacman
+      - name: remmina
+        state: latest
+        source: pacman
+      - name: libvncserver
+        state: latest
+        source: pacman
+      - name: openbox
+        state: latest
+        source: pacman
+      - name: libxkbcommon-x11
+        state: latest
+        source: pacman
+      - name: xcb-util-cursor
+        state: latest
+        source: pacman
+      - name: xcb-util-wm
+        state: latest
+        source: pacman
+      - name: xcb-util-image
+        state: latest
+        source: pacman
+      - name: xcb-util-keysyms
+        state: latest
+        source: pacman
+      - name: xcb-util-renderutil
+        state: latest
+        source: pacman
   - name: vpn
     tag: vpn
     packages:
