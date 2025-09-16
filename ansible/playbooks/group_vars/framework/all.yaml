@@ -276,6 +276,18 @@ modules:
       - name: wheel
         source: pip
         version: "0.45.1"
+      - name: docker
+        state: latest
+        source: pacman
+      - name: docker-compose
+        state: latest
+        source: pacman
+      - name: docker-buildx
+        state: latest
+        source: pacman
+    users:
+      - name: "{{ ansible_user_id }}"
+        groups: docker
   - name: hyprland
     tag: h
     packages:
