@@ -33,6 +33,18 @@ monitor_tag = "laptop"
 description = "Technical Concepts Ltd Beyond TV 0x00010000"
 monitor_tag = "external"
 
+[profiles.ldn_1]
+config_file = "hyprconfigs/ldn_1.go.tmpl"
+config_file_type = "template"
+
+[[profiles.ldn_1.conditions.required_monitors]]
+description = "BOE NE135A1M-NY1"
+monitor_tag = "laptop"
+
+[[profiles.ldn_1.conditions.required_monitors]]
+description = "LG Electronics LG ULTRAFINE 411NTAB69680"
+monitor_tag = "external"
+
 [fallback_profile]
 config_file = "hyprconfigs/fallback.conf"
 config_file_type = "static"
