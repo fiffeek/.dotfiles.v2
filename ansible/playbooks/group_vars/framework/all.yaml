@@ -470,6 +470,12 @@ modules:
       - name: tldr
         version: 3.4.1
         source: pip
+  - name: image
+    tag: im
+    packages:
+      - name: gimp
+        state: latest
+        source: pacman
   - name: video
     tag: video
     packages:
