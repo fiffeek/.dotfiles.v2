@@ -43,6 +43,17 @@ monitor_tag = "laptop"
 
 [[profiles.ldn_1.conditions.required_monitors]]
 description = "LG Electronics LG ULTRAFINE 411NTAB69680"
+
+[profiles.ldn_2]
+config_file = "hyprconfigs/ldn_2.go.tmpl"
+config_file_type = "template"
+
+[[profiles.ldn_2.conditions.required_monitors]]
+description = "BOE NE135A1M-NY1"
+monitor_tag = "laptop"
+
+[[profiles.ldn_2.conditions.required_monitors]]
+description = "LG Electronics LG TV 0x01010101"
 monitor_tag = "external"
 
 [fallback_profile]
