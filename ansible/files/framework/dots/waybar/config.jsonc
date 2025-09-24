@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["battery", "backlight",  "custom/cpu-temp", "custom/gpu-temp", "wireplumber",],
   "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["custom/recording", "custom/power-mode", "custom/mullvad-vpn", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
+  "modules-right": ["custom/dictation", "custom/recording", "custom/power-mode", "custom/mullvad-vpn", "custom/homelab-vpn", "bluetooth", "disk", "cpu", "memory", "clock" ],
 
   "margin": "8px 16px -12px",
 
@@ -67,6 +67,14 @@
     "return-type": "json",
     "interval": 1,
     "exec-if": "pgrep wl-screenrec",
+  },
+
+ "custom/dictation": {
+    "format": " {text}",
+    "exec": "~/.config/waybar/bin/dictation.sh",
+    "return-type": "json",
+    "interval": 1,
+    "exec-if": "pgrep -f nerd-dictation",
   },
 
  "custom/cpu-temp": {

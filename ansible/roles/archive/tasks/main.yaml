@@ -1,0 +1,4 @@
+---
+- name: Ensure archives packages are managed {{ archive_items | map(attribute='name') }}
+  ansible.builtin.include_tasks: archive.yaml
+  with_items: "{{ archive_items }}"

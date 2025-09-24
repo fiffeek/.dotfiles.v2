@@ -79,3 +79,8 @@
     name: custom_systemd
   vars:
     custom_systemd_services: "{{ module.custom_systemd_services | default([]) }}"
+- name: Manage archives
+  ansible.builtin.include_role:
+    name: archive
+  vars:
+    archive_items: "{{ module.archives | default([]) }}"

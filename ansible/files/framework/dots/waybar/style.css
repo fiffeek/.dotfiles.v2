@@ -79,6 +79,7 @@ button:hover {
 #custom-mullvad-vpn,
 #custom-power-mode,
 #custom-recording,
+#custom-dictation,
 #network {
   padding: 0 10px;
   margin: 0 4px;
@@ -101,6 +102,7 @@ button:hover {
 #custom-cpu-temp,
 #custom-gpu-temp,
 #custom-recording,
+#custom-dictation,
 #network {
   background: @waybar-bg;
 }
@@ -131,6 +133,7 @@ button:hover {
 #custom-mullvad-vpn.activated,
 #bluetooth.connected,
 #custom-recording.recording,
+#custom-dictation.recording,
 #bluetooth.on {
   color: @waybar-on_primary;
   background: @waybar-primary;

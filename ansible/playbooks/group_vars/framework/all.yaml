@@ -863,6 +863,33 @@ modules:
       - name: xcb-util-renderutil
         state: latest
         source: pacman
+  - name: tts
+    tag: tts
+    directories:
+      - path: "{{ configs_home }}/nerd-dictation/model"
+    packages:
+      - name: vosk
+        version: "0.3.45"
+        source: pip
+      - name: nerd-dictation-git
+        state: latest
+        source: aur
+        helper: paru
+      - name: ydotool
+        state: absent
+        source: pacman
+      - name: wtype
+        state: latest
+        source: pacman
+    archives:
+      - name: tts-model
+        src: https://alphacephei.com/kaldi/models/vosk-model-small-en-us-0.15.zip
+        dest: "{{ configs_home }}/nerd-dictation/model"
+        remote_src: true
+      - name: tts-model-lgraph
+        src: https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
+        dest: "{{ configs_home }}/nerd-dictation/model"
+        remote_src: true
   - name: vpn
     tag: vpn
     packages:
