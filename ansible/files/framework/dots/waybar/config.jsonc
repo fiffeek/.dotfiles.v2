@@ -74,7 +74,7 @@
     "exec": "~/.config/waybar/bin/dictation.sh",
     "return-type": "json",
     "interval": 1,
-    "exec-if": "pgrep -f nerd-dictation",
+    "exec-if": "pgrep -f '/usr/bin/nerd-dictation begin'",
   },
 
  "custom/cpu-temp": {
