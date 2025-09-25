@@ -1,7 +1,7 @@
 ---
 session_name: homelab
 windows:
-  - layout: dbab,174x44,0,0{86x44,0,0,18,87x44,87,0,21}
+  - layout: 6674,174x44,0,0{102x44,0,0,2,71x44,103,0,3}
     options: {}
     shell_command_before:
       - source venv/bin/activate
