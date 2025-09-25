@@ -1,0 +1,28 @@
+---
+session_name: homelab
+windows:
+  - layout: dbab,174x44,0,0{86x44,0,0,18,87x44,87,0,21}
+    options: {}
+    shell_command_before:
+      - source venv/bin/activate
+    panes:
+      - focus: "true"
+        shell_command: n .
+      - shell_command: make install
+    start_directory: /home/fmikina/personal/homelab
+    window_name: code
+    focus: "true"
+  - layout: df51,174x44,0,0,22
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: ssh black-cat.home
+    start_directory: /home/fmikina/personal/homelab
+    window_name: ssh:black-cat
+  - layout: df51,174x44,0,0,22
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: ssh cherry-pot.home
+    start_directory: /home/fmikina/personal/homelab
+    window_name: ssh:cherry-pot
