@@ -12,6 +12,13 @@ windows:
     start_directory: /home/fmikina/personal/homelab
     window_name: code
     focus: "true"
+  - layout: 5f50,174x44,0,0,11
+    options: {}
+    panes:
+      - focus: "true"
+        shell_command: claude
+    start_directory: /home/fmikina/personal/homelab
+    window_name: ai
   - layout: df51,174x44,0,0,22
     options: {}
     panes:
