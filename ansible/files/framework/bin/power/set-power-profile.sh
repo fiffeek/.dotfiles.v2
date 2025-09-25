@@ -12,6 +12,16 @@ set_epp() {
   echo "$1" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference
 }
 
+stop_dockerd() {
+  sudo systemctl stop docker
+  sudo systemctl stop docker.socket
+}
+
+start_dockerd() {
+  sudo systemctl start docker.socket
+  sudo systemctl start docker
+}
+
 wifi_level() {
   NM_CONFIG="/etc/NetworkManager/conf.d/wifi-powersave.conf"
   if [ "$1" = "powersave" ]; then
@@ -63,6 +73,7 @@ performance() {
   wifi_level "performance"
   aspm_level "default"
   display_backlight_level "25%"
+  start_dockerd
   set_flag "performance" || true
   notify "Performance"
 }
@@ -78,6 +89,7 @@ powersaver() {
   wifi_level "powersave"
   aspm_level "powersupersave"
   display_backlight_level "1%"
+  stop_dockerd
   set_flag "powersave" || true
   notify "Powersave"
 }
