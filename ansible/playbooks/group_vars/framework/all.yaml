@@ -294,6 +294,9 @@ modules:
       - name: hyprland
         state: latest
         source: pacman
+      - name: hyprsunset
+        state: latest
+        source: pacman
       - name: hyprlock
         state: latest
         source: pacman
