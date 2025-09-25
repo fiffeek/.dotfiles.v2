@@ -8,7 +8,7 @@ windows:
     panes:
       - focus: "true"
         shell_command: n .
-      - shell_command: make install
+      - shell_command: make dev
     start_directory: /home/fmikina/personal/homelab
     window_name: code
     focus: "true"
