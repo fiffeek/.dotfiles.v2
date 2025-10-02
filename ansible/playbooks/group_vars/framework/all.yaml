@@ -489,6 +489,12 @@ modules:
         state: latest
         source: aur
         helper: paru
+      - name: vhs
+        state: latest
+        source: pacman
+      - name: ttyd
+        state: latest
+        source: pacman
   - name: screenshot
     tag: ss
     packages:
