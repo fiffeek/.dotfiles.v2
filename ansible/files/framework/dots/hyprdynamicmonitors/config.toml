@@ -59,3 +59,16 @@ monitor_tag = "external"
 [fallback_profile]
 config_file = "hyprconfigs/fallback.conf"
 config_file_type = "static"
+
+[profiles.waw_3]
+config_file = "/home/fmikina/.config/hyprdynamicmonitors/hyprconfigs/waw_3.go.tmpl"
+config_file_type = "template"
+[profiles.waw_3.conditions]
+
+[[profiles.waw_3.conditions.required_monitors]]
+description = "BOE NE135A1M-NY1"
+monitor_tag = "monitor0"
+
+[[profiles.waw_3.conditions.required_monitors]]
+description = "Sony SONY TV  *30 0x01010101"
+monitor_tag = "monitor1"
