@@ -24,7 +24,7 @@ You likely want to use the dots are reference, but here's how the project can be
 
 ```bash
 # install asdf to pull python (pyenv) & setup venv
-make install
+make dev
 # debug, no changes applied
 make MODE=debug provisioning
 # standard bootstrap, installs everything

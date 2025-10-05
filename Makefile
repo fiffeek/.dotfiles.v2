@@ -15,7 +15,10 @@ ifdef ONLY_MODULE
 EXTRA_ARGS = --extra-vars "only_module=$(ONLY_MODULE)" $(EXTRA_FLAGS)
 endif
 
-install: $(INSTALL_DIR)/.dir.stamp $(INSTALL_DIR)/.venv.stamp $(INSTALL_DIR)/.precommit.stamp
+dev: \
+	$(INSTALL_DIR)/.dir.stamp \
+	$(INSTALL_DIR)/.venv.stamp \
+	$(INSTALL_DIR)/.precommit.stamp
 
 $(INSTALL_DIR)/.dir.stamp:
 	mkdir -p $(INSTALL_DIR)
