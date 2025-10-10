@@ -264,4 +264,7 @@ alias keepify="find . -type d -exec touch {}/.gitkeep \\;"
 
 alias pow="sudo powertop"
 
+alias h="hyprctl"
+alias H="hyprland"
+
 bindkey -v
