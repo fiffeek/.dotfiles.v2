@@ -863,6 +863,9 @@ modules:
       - name: xorg-server-xvfb
         state: latest
         source: pacman
+      - name: xorg-xeyes
+        state: latest
+        source: pacman
       - name: x11vnc
         state: latest
         source: pacman
