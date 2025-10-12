@@ -577,6 +577,12 @@ modules:
       - name: user.name
         value: Filip Mikina
         scope: global
+      - name: alias.back
+        value: checkout -
+        scope: global
+      - name: alias.m
+        value: checkout main
+        scope: global
   - name: nvim
     tag: nvim
     git_config:
