@@ -214,6 +214,18 @@ modules:
         versions:
           - latest
         global: latest
+      - name: ruby
+        source: asdf
+        repository: https://github.com/asdf-vm/asdf-ruby.git
+        versions:
+          - latest
+        global: latest
+      - name: lua
+        source: asdf
+        repository: https://github.com/Stratus3D/asdf-lua.git
+        versions:
+          - latest
+        global: latest
       - name: uv
         source: asdf
         repository: https://github.com/asdf-community/asdf-uv.git
