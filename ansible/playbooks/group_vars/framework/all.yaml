@@ -200,6 +200,11 @@ modules:
         dest: "{{ firefox.profile }}/chrome/userContent.css"
       - src: "{{ dotfiles_source_dir }}/mozilla/native-messaging-hosts/pywalfox.json"
         dest: "{{ firefox.native_messaging_hosts }}/pywalfox.json"
+    commands:
+      - name: Make firefox default for xdg-open
+        cmd: xdg-settings get default-web-browser
+        set_fact: xdg-settings set default-web-browser firefox.desktop
+        when_not_stdout: "firefox.desktop"
   - name: terminal
     tag: t
     packages:
