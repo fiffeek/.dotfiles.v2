@@ -189,6 +189,10 @@ modules:
       - name: firefox
         state: latest
         source: pacman
+      - name: google-chrome
+        state: latest
+        source: aur
+        helper: paru
     links:
       - src: "{{ dotfiles_source_dir }}/firefox/chrome/userChrome.css"
         dest: "{{ firefox.profile }}/chrome/userChrome.css"
