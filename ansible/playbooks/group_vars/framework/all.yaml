@@ -304,6 +304,9 @@ modules:
       - name: docker-buildx
         state: latest
         source: pacman
+      - name: cloc
+        state: latest
+        source: pacman
     users:
       - name: "{{ ansible_user_id }}"
         groups: docker
