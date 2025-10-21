@@ -83,6 +83,21 @@ modules:
       - name: nix
         state: latest
         source: pacman
+      - name: tar
+        state: latest
+        source: pacman
+      - name: gzip
+        state: latest
+        source: pacman
+      - name: bzip2
+        state: latest
+        source: pacman
+      - name: xz
+        state: latest
+        source: pacman
+      - name: unzip
+        state: latest
+        source: pacman
     line_in_file:
       - regexp: ^WIRELESS_REGDOM=.*
         line: WIRELESS_REGDOM="PL"
@@ -204,7 +219,7 @@ modules:
       - name: Make firefox default for xdg-open
         cmd: xdg-settings get default-web-browser
         set_fact: xdg-settings set default-web-browser firefox.desktop
-        when_not_stdout: "firefox.desktop"
+        when_not_stdout: firefox.desktop
   - name: terminal
     tag: t
     packages:
@@ -315,6 +330,15 @@ modules:
     users:
       - name: "{{ ansible_user_id }}"
         groups: docker
+    archives:
+      - name: mise
+        src: https://github.com/jdx/mise/releases/download/v2025.10.12/mise-v2025.10.12-linux-x64.tar.gz
+        dest: "{{ binaries_home }}/"
+        remote_src: true
+        extra_opts:
+          - --strip-components=2
+        include:
+          - mise/bin/mise
   - name: hyprland
     tag: h
     packages:

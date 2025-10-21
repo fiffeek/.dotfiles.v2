@@ -5,3 +5,4 @@
     dest: "{{ item.dest }}"
     remote_src: "{{ item.remote_src | d(False) | bool }}"
     extra_opts: "{{ item.extra_opts | d([]) }}"
+    include: "{{ item.include | d([]) }}"
