@@ -670,9 +670,9 @@ modules:
         versions:
           - latest
         global: latest
-      - name: exa
+      - name: eza
         source: asdf
-        repository: https://github.com/nyrst/asdf-exa.git
+        repository: https://github.com/lwiechec/asdf-eza
         versions:
           - latest
         global: latest

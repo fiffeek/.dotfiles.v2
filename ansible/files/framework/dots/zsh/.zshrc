@@ -92,7 +92,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 # switch group using `,` and `.`
 zstyle ':fzf-tab:*' switch-group ',' '.'
 # use input as query string when completing zlua
@@ -153,17 +153,17 @@ export EDITOR='nvim'
 # EXA aliases
 
 # general use
-alias ls='exa'                                                         # ls
-alias l='exa -lbF'                                                     # list, size, type, git
-alias ll='exa -lbGF'                                                   # long list
-alias llm='exa -lbGF --git --sort=modified'                            # long list, modified date sort
-alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
-alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+alias ls='eza'                                                         # ls
+alias l='eza -lbF'                                                     # list, size, type, git
+alias ll='eza -lbGF'                                                   # long list
+alias llm='eza -lbGF --git --sort=modified'                            # long list, modified date sort
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
 
 # speciality views
-alias lS='exa -1'			                                                  # one column, just names
-alias lt='exa --tree --level=2'                                         # tree
-alias tree='exa --tree'
+alias lS='eza -1'			                                                  # one column, just names
+alias lt='eza --tree --level=2'                                         # tree
+alias tree='eza --tree'
 
 # Bluetooth ON/OFF with restart due to TLP interfering after the startup
 alias bon="rfkill block bluetooth && rfkill unblock bluetooth && bluetoothctl power on"
