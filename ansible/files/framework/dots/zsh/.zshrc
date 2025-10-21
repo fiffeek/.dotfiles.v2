@@ -12,6 +12,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 # Add custom binaries to the path
 export PATH=$HOME/.bin:$HOME/.bin/bin:$PATH
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+eval "$(mise activate zsh --shims)"
 
 export LD_LIBRARY_PATH=$HOME/.bin/lib:$LD_LIBRARY_PATH
 export PATH=$HOME/.spicetify:$PATH
@@ -266,7 +267,5 @@ alias pow="sudo powertop"
 
 alias h="hyprctl"
 alias H="hyprland"
-
-echo 'eval "$(mise activate zsh)"'
 
 bindkey -v
