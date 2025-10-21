@@ -267,4 +267,6 @@ alias pow="sudo powertop"
 alias h="hyprctl"
 alias H="hyprland"
 
+echo 'eval "$(mise activate zsh)"'
+
 bindkey -v
