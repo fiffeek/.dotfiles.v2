@@ -533,6 +533,9 @@ modules:
       - name: gimp
         state: latest
         source: pacman
+      - name: inkscape
+        state: latest
+        source: pacman
   - name: video
     tag: video
     packages:
