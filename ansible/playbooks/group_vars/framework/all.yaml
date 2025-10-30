@@ -74,6 +74,9 @@ modules:
       - name: paru
         state: latest
         source: aur
+      - name: yay
+        state: latest
+        source: aur
       - name: framework-system
         state: latest
         source: pacman
