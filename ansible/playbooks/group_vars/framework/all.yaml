@@ -536,6 +536,9 @@ modules:
       - name: inkscape
         state: latest
         source: pacman
+      - name: gifsicle
+        state: latest
+        source: pacman
   - name: video
     tag: video
     packages:
