@@ -1001,3 +1001,9 @@ modules:
           Servers:
           10.64.0.1
           192.168.1.24
+  - name: virtual machines
+    tag: vm
+    packages:
+      - name: virtualbox
+        state: latest
+        source: pacman
