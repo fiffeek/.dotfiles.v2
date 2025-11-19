@@ -1,5 +1,8 @@
 [Unit]
 Description={{ item.description }}
+{% if item.documentation is defined -%}
+Documentation={{ item.documentation }}
+{% endif %}
 {% for service in item.after | d(['default.target']) -%}
 After={{ service }}
 {% endfor %}
@@ -28,6 +31,12 @@ Environment="PATH={{ binaries_home }}:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 {% if item.restart is defined -%}
 Restart={{ item.restart.mode | d('no') }}
 RestartSec={{ item.restart.sec | d('10') }}
+{% endif %}
+{% if item.timeout_start_sec is defined -%}
+TimeoutStartSec={{ item.timeout_start_sec }}
+{% endif %}
+{% if (item.remain_after_exit | d(False)) %}
+RemainAfterExit=yes
 {% endif %}
 {% endif %}
 

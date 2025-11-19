@@ -6,3 +6,4 @@ systemd:
     graphical_session_pre: graphical-session-pre.target
     upower: upower.service
     hyprland_custom_session: hyprland-custom-session.target
+    default: default.target

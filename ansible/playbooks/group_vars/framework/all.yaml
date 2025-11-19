@@ -473,6 +473,15 @@ modules:
         binds_to: "{{ systemd.targets.graphical_session }}"
         wants:
           - "{{ systemd.targets.graphical_session_pre }}"
+      - name: hyprdynamicmonitors-prepare
+        description: HyprDynamicMonitors - boot-time cleanup
+        documentation: https://fiffeek.github.io/hyprdynamicmonitors/
+        exec_start: "{{ binaries_home }}/hyprdynamicmonitors prepare"
+        type: oneshot
+        wanted_by: "{{ systemd.targets.default }}"
+        timeout_start_sec: 3
+        remain_after_exit: true
+        after: []
       - name: hyprdynamicmonitors
         description: Run hyprdynamicmonitors daemon
         exec_start: "{{ binaries_home }}/hyprdynamicmonitors --debug"
