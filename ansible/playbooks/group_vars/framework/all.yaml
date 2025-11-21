@@ -147,6 +147,9 @@ modules:
       - name: pywalfox
         source: pip
         version: 2.7.4
+      - name: pywal
+        source: pip
+        version: 3.3.0
     links:
       - src: "{{ dotfiles_source_dir }}/wallust"
         dest: "{{ configs_home }}/wallust"
