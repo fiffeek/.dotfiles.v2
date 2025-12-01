@@ -2,6 +2,15 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      ocamllsp = {
+        cmd = { "ocamllsp" },
+        settings = {
+          codelens = { enable = true },
+          inlayHints = { enable = true },
+          syntaxDocumentation = { enable = true },
+        },
+        server_capabilities = { semanticTokensProvider = false },
+      },
       gopls = {
         settings = {
           directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-venv" },
