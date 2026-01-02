@@ -101,6 +101,9 @@ modules:
       - name: unzip
         state: latest
         source: pacman
+      - name: wayland-utils
+        state: latest
+        source: pacman
     line_in_file:
       - regexp: ^WIRELESS_REGDOM=.*
         line: WIRELESS_REGDOM="PL"
@@ -303,7 +306,7 @@ modules:
         source: pacman
       - name: "@anthropic-ai/claude-code"
         global: true
-        version: 1.0.89
+        version: 2.0.58
         source: npm
       - name: "@openai/codex"
         global: true
