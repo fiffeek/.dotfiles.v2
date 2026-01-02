@@ -26,7 +26,7 @@ function send_notification {
 
 function main {
   control-hyprpaper.sh start || true
-  hyprctl hyprpaper reload ",$WALLPAPER"
+  hyprctl hyprpaper wallpaper ",$WALLPAPER"
   wallust-wrapper.sh run "$WALLPAPER" $EXTRA_WALLUST_ARGS
   matugen-wrapper.sh image "$WALLPAPER" $EXTRA_MATUGEN_ARGS
   reload
