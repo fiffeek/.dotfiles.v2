@@ -69,7 +69,6 @@ typer==0.16.0
 types-colorama==0.4.15.20240311
 typing-extensions==4.14.1
 urllib3==1.26.20
-vdf==4.0
 virtualenv==20.31.2
 wcmatch==10.1
 yamllint==1.37.1
