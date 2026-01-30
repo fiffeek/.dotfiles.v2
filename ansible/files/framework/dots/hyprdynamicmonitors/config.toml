@@ -81,8 +81,8 @@ config_file_type = "template"
 
 [[profiles.ldn_3.conditions.required_monitors]]
 description = "BOE NE135A1M-NY1"
-monitor_tag = "monitor0"
+monitor_tag = "laptop"
 
 [[profiles.ldn_3.conditions.required_monitors]]
 description = "Dell Inc. DELL U2725QE 2BRJ734"
-monitor_tag = "monitor1"
+monitor_tag = "external"

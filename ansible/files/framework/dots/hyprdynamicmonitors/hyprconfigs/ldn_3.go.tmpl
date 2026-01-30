@@ -1,11 +1,17 @@
 # Generated with hyprdynamicmonitors freeze.
-# This is a template that you can edit, it is just a starter that pulled your current monitor setup,
-# adjust as needed.
-# You can use templates here etc, see https://github.com/fiffeek/hyprdynamicmonitors/blob/main/examples/basic/hyprconfigs/template.go.tmpl.
-# Monitors are given arbitrary tags (the "monitor" prefix and the ID coming from hyprland).
-# If you are using tui to edit, leave this at the end of your file (the last monitor config applies)
-# and leave the markers.
-# <<<<< TUI AUTO START
-monitor=desc:BOE NE135A1M-NY1,2880x1920@120.00000,0x0,2.00000000,transform,0,vrr,1
-monitor=desc:Dell Inc. DELL U2725QE 2BRJ734,3840x2160@59.99700,-2304x-580,1.66666667,transform,0,vrr,0
-# <<<<< TUI AUTO END
+
+{{- $laptop := index .MonitorsByTag "laptop" -}}
+{{- $external := index .MonitorsByTag "external" -}}
+
+monitor=desc:{{$laptop.Description}},2880x1920@120.00000,0x0,2.00000000,transform,0,vrr,1
+monitor=desc:{{$external.Description}},3840x2160@59.99700,-2304x-580,1.66666667,transform,0,vrr,0
+
+workspace = 2,monitor:{{$external.Name}}
+workspace = 3,monitor:{{$external.Name}}
+workspace = 4,monitor:{{$external.Name}}
+workspace = 5,monitor:{{$external.Name}}
+
+exec = hyprctl dispatch moveworkspacetomonitor 2 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 3 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 4 {{$external.Name}}
+exec = hyprctl dispatch moveworkspacetomonitor 5 {{$external.Name}}
