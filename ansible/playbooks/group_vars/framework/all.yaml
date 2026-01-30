@@ -2,6 +2,15 @@
 dotfiles_source_dir: "{{ playbook_dir }}/../files/framework/dots"
 bin_source_dir: "{{ playbook_dir }}/../files/framework/bin"
 modules:
+  - name: sound
+    tag: s
+    packages:
+      - name: alsa-utils
+        state: latest
+        source: pacman
+      - name: wiremix
+        state: latest
+        source: pacman
   - name: base packages
     tag: bp
     packages:
