@@ -159,22 +159,6 @@ body {
   }
 }
 
-@-moz-document domain("chatgpt.com") {
-
-  html,
-  body {
-    background-color: var(--matugen-background) !important;
-  }
-
-  header,
-  nav,
-  .sticky,
-  .dark\:bg-gray-900,
-  .dark\:bg-gray-800 {
-    background-color: var(--matugen-background) !important;
-  }
-}
-
 @-moz-document domain("claude.ai") {
 
   html,
