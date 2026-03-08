@@ -922,6 +922,13 @@ modules:
         version: master
         diff: "{{ repos.diffs_source }}/vcmi/master.diff"
         makepkg: true
+    commands:
+      - name: Break LC_PRELOAD for gamescope
+        cmd: setcap 'cap_sys_nice=eip' /usr/bin/gamescope
+        become: true
+        set_fact: getcap /usr/bin/gamescope
+        when_not_stdout: |-
+          /usr/bin/gamescope cap_sys_nice=eip
   - name: reading software
     tag: read
     packages:
